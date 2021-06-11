@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-06-09T00:26:21.059Z</updated>
+  <updated>2021-05-20T07:59:32.452Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,28 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>机器学习深度学习</title>
-    <link href="http://yoursite.com/2021/06/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    <id>http://yoursite.com/2021/06/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</id>
-    <published>2021-06-11T01:52:09.239Z</published>
-    <updated>2021-06-09T00:26:21.059Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h1><h2 id="机器学习基本概念"><a href="#机器学习基本概念" class="headerlink" title="机器学习基本概念"></a>机器学习基本概念</h2><p><strong>机器学习 ≈ 寻找函数</strong></p><p>什么是机器学习？机器学习简单来说就是让机器具备自动寻找一个函数的能力。</p><ul><li>语音识别</li></ul><script type="math/tex; mode=display">f(一段语音)=声音信号内容</script><ul><li>图片识别</li></ul><script type="math/tex; mode=display">f(一张图片)=图片内容</script><h2 id="机器学习不同类别"><a href="#机器学习不同类别" class="headerlink" title="机器学习不同类别"></a>机器学习不同类别</h2><p><strong>Regression：</strong>函数输出是一个数值（scalar）。通过如输入今天PM2.5相关数据，输出明天PM2.5的数值，找这个函数f的过程就叫Regression</p><p><img src= "https://i.loli.net/2020/07/18/9cVzWDdGBPJmKyY.gif" data-src="https://i.loli.net/2021/06/03/DEUNZl4bz21BCty.png" alt="image-20210603142221619"></p><p><strong>Classification：</strong>给出一些选项（<strong>calss</strong>），这个函数输出就是从我们设定好的选项里面选择一个当作输出，这个函数过程就叫Classification</p><p><img src= "https://i.loli.net/2020/07/18/9cVzWDdGBPJmKyY.gif" data-src="https://i.loli.net/2021/06/03/n8FkAcHga5IZCEQ.png" alt="image-20210603142253747"></p><p>输出可以输出一个或多个</p><p><img src= "https://i.loli.net/2020/07/18/9cVzWDdGBPJmKyY.gif" data-src="https://i.loli.net/2021/06/03/8WZQBI2v5pi6MOa.png" alt="20210603142654.png"></p><p><strong>Structured Learning：</strong>机器不只是做选择题或输出一个数字，还要产生一个有结构的物件，让机器学会创造，比如画一张图、写一篇文章。这种让机器产生有结构东西的问题，就叫做Structured Learning。</p><h2 id="例子：youtube订阅人数预测"><a href="#例子：youtube订阅人数预测" class="headerlink" title="例子：youtube订阅人数预测"></a>例子：youtube订阅人数预测</h2><h3 id="1-函数"><a href="#1-函数" class="headerlink" title="1.函数"></a>1.函数</h3><p>第一步写出一个带有未知参数的函数式，猜测我们要找的函数 f 的数学式长什么样子</p><p><img src= "https://i.loli.net/2020/07/18/9cVzWDdGBPJmKyY.gif" data-src="https://i.loli.net/2021/06/03/rASoWcEL8mpdOBF.png" alt="image-20210601095303304"></p><blockquote><p>函数式（Model）的猜测是往往来自于对问题本质上的了解（domain knowledge）、</p><p>用前一天的订阅人数（$x_1$）乘上一个数值（$w$）再加上一个（$b$）做修正，得出的（$y$）就作为今天订阅人数的预测。</p></blockquote><h3 id="定义Loss"><a href="#定义Loss" class="headerlink" title="定义Loss"></a>定义Loss</h3><p><strong>Loss是一个函数$L(b,w)$，其中$w$和$w$是输入值，这个函数的输入是Model里面的参数。函数的输出值代表我们将输入值输入，输入的这组数值是好还是不好。</strong></p><p>$\widehat{y}$</p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;机器学习&quot;&gt;&lt;a href=&quot;#机器学习&quot; class=&quot;headerlink&quot; title=&quot;机器学习&quot;&gt;&lt;/a&gt;机器学习&lt;/h1&gt;&lt;h2 id=&quot;机器学习基本概念&quot;&gt;&lt;a href=&quot;#机器学习基本概念&quot; class=&quot;headerlink&quot; title=&quot;机
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
   
   <entry>
     <title>Mysql</title>
@@ -87,19 +65,19 @@
   </entry>
   
   <entry>
-    <title>python学习笔记</title>
-    <link href="http://yoursite.com/2020/12/28/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2020/12/28/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <title>机器学习与深度学习</title>
+    <link href="http://yoursite.com/2020/12/28/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://yoursite.com/2020/12/28/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</id>
     <published>2020-12-28T10:57:20.000Z</published>
-    <updated>2020-12-28T10:59:33.482Z</updated>
+    <updated>2021-06-11T01:57:17.312Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    <content type="html"><![CDATA[<h1 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h1><h2 id="机器学习基本概念"><a href="#机器学习基本概念" class="headerlink" title="机器学习基本概念"></a>机器学习基本概念</h2><p><strong>机器学习 ≈ 寻找函数</strong></p><p>什么是机器学习？机器学习简单来说就是让机器具备自动寻找一个函数的能力。</p><ul><li>语音识别</li></ul><script type="math/tex; mode=display">f(一段语音)=声音信号内容</script><ul><li>图片识别</li></ul><script type="math/tex; mode=display">f(一张图片)=图片内容</script><h2 id="机器学习不同类别"><a href="#机器学习不同类别" class="headerlink" title="机器学习不同类别"></a>机器学习不同类别</h2><p><strong>Regression：</strong>函数输出是一个数值（scalar）。通过如输入今天PM2.5相关数据，输出明天PM2.5的数值，找这个函数f的过程就叫Regression</p><p><img src= "https://i.loli.net/2020/07/18/9cVzWDdGBPJmKyY.gif" data-src="https://i.loli.net/2021/06/03/DEUNZl4bz21BCty.png" alt="image-20210603142221619"></p><p><strong>Classification：</strong>给出一些选项（<strong>calss</strong>），这个函数输出就是从我们设定好的选项里面选择一个当作输出，这个函数过程就叫Classification</p><p><img src= "https://i.loli.net/2020/07/18/9cVzWDdGBPJmKyY.gif" data-src="https://i.loli.net/2021/06/03/n8FkAcHga5IZCEQ.png" alt="image-20210603142253747"></p><p>输出可以输出一个或多个</p><p><img src= "https://i.loli.net/2020/07/18/9cVzWDdGBPJmKyY.gif" data-src="https://i.loli.net/2021/06/03/8WZQBI2v5pi6MOa.png" alt="20210603142654.png"></p><p><strong>Structured Learning：</strong>机器不只是做选择题或输出一个数字，还要产生一个有结构的物件，让机器学会创造，比如画一张图、写一篇文章。这种让机器产生有结构东西的问题，就叫做Structured Learning。</p><h2 id="例子：youtube订阅人数预测"><a href="#例子：youtube订阅人数预测" class="headerlink" title="例子：youtube订阅人数预测"></a>例子：youtube订阅人数预测</h2><h3 id="1-函数"><a href="#1-函数" class="headerlink" title="1.函数"></a>1.函数</h3><p>第一步写出一个带有未知参数的函数式，猜测我们要找的函数 f 的数学式长什么样子</p><p><img src= "https://i.loli.net/2020/07/18/9cVzWDdGBPJmKyY.gif" data-src="https://i.loli.net/2021/06/03/rASoWcEL8mpdOBF.png" alt="image-20210601095303304"></p><blockquote><p>函数式（Model）的猜测是往往来自于对问题本质上的了解（domain knowledge）、</p><p>用前一天的订阅人数（$x_1$）乘上一个数值（$w$）再加上一个（$b$）做修正，得出的（$y$）就作为今天订阅人数的预测。</p></blockquote><h3 id="定义Loss"><a href="#定义Loss" class="headerlink" title="定义Loss"></a>定义Loss</h3><p><strong>Loss是一个函数$L(b,w)$，其中$w$和$w$是输入值，这个函数的输入是Model里面的参数。函数的输出值代表我们将输入值输入，输入的这组数值是好还是不好。</strong></p><p>$\widehat{y}$</p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/spoiler.css&quot; type=&quot;text/css&quot;&gt;&lt;script src=&quot;/js/spoiler.js&quot; type=&quot;text/javascript&quot; async&gt;&lt;/script&gt;
+        &lt;h1 id=&quot;机器学习&quot;&gt;&lt;a href=&quot;#机器学习&quot; class=&quot;headerlink&quot; title=&quot;机器学习&quot;&gt;&lt;/a&gt;机器学习&lt;/h1&gt;&lt;h2 id=&quot;机器学习基本概念&quot;&gt;&lt;a href=&quot;#机器学习基本概念&quot; class=&quot;headerlink&quot; title=&quot;机
       
     
     </summary>
@@ -108,7 +86,7 @@
       <category term="编程开发学习" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+      <category term="python - 人工智能" scheme="http://yoursite.com/tags/python-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
     
   </entry>
   
