@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2021/03/09/JavaWeb/</loc>
+    <loc>http://yoursite.com/2021/06/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
     
-    <lastmod>2021-03-24T02:00:34.772Z</lastmod>
+    <lastmod>2021-06-09T00:26:21.059Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2021/01/24/wxxcx/</loc>
+    <loc>http://yoursite.com/2021/05/20/Mysql/</loc>
     
-    <lastmod>2021-03-24T01:54:53.793Z</lastmod>
+    <lastmod>2021-05-20T07:59:32.452Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2021/03/09/JavaWeb/</loc>
+    
+    <lastmod>2021-03-24T02:00:34.772Z</lastmod>
     
   </url>
   

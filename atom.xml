@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-03-24T02:00:34.772Z</updated>
+  <updated>2021-06-09T00:26:21.059Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,50 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器学习深度学习</title>
+    <link href="http://yoursite.com/2021/06/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://yoursite.com/2021/06/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</id>
+    <published>2021-06-11T01:52:09.239Z</published>
+    <updated>2021-06-09T00:26:21.059Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h1><h2 id="机器学习基本概念"><a href="#机器学习基本概念" class="headerlink" title="机器学习基本概念"></a>机器学习基本概念</h2><p><strong>机器学习 ≈ 寻找函数</strong></p><p>什么是机器学习？机器学习简单来说就是让机器具备自动寻找一个函数的能力。</p><ul><li>语音识别</li></ul><script type="math/tex; mode=display">f(一段语音)=声音信号内容</script><ul><li>图片识别</li></ul><script type="math/tex; mode=display">f(一张图片)=图片内容</script><h2 id="机器学习不同类别"><a href="#机器学习不同类别" class="headerlink" title="机器学习不同类别"></a>机器学习不同类别</h2><p><strong>Regression：</strong>函数输出是一个数值（scalar）。通过如输入今天PM2.5相关数据，输出明天PM2.5的数值，找这个函数f的过程就叫Regression</p><p><img src= "https://i.loli.net/2020/07/18/9cVzWDdGBPJmKyY.gif" data-src="https://i.loli.net/2021/06/03/DEUNZl4bz21BCty.png" alt="image-20210603142221619"></p><p><strong>Classification：</strong>给出一些选项（<strong>calss</strong>），这个函数输出就是从我们设定好的选项里面选择一个当作输出，这个函数过程就叫Classification</p><p><img src= "https://i.loli.net/2020/07/18/9cVzWDdGBPJmKyY.gif" data-src="https://i.loli.net/2021/06/03/n8FkAcHga5IZCEQ.png" alt="image-20210603142253747"></p><p>输出可以输出一个或多个</p><p><img src= "https://i.loli.net/2020/07/18/9cVzWDdGBPJmKyY.gif" data-src="https://i.loli.net/2021/06/03/8WZQBI2v5pi6MOa.png" alt="20210603142654.png"></p><p><strong>Structured Learning：</strong>机器不只是做选择题或输出一个数字，还要产生一个有结构的物件，让机器学会创造，比如画一张图、写一篇文章。这种让机器产生有结构东西的问题，就叫做Structured Learning。</p><h2 id="例子：youtube订阅人数预测"><a href="#例子：youtube订阅人数预测" class="headerlink" title="例子：youtube订阅人数预测"></a>例子：youtube订阅人数预测</h2><h3 id="1-函数"><a href="#1-函数" class="headerlink" title="1.函数"></a>1.函数</h3><p>第一步写出一个带有未知参数的函数式，猜测我们要找的函数 f 的数学式长什么样子</p><p><img src= "https://i.loli.net/2020/07/18/9cVzWDdGBPJmKyY.gif" data-src="https://i.loli.net/2021/06/03/rASoWcEL8mpdOBF.png" alt="image-20210601095303304"></p><blockquote><p>函数式（Model）的猜测是往往来自于对问题本质上的了解（domain knowledge）、</p><p>用前一天的订阅人数（$x_1$）乘上一个数值（$w$）再加上一个（$b$）做修正，得出的（$y$）就作为今天订阅人数的预测。</p></blockquote><h3 id="定义Loss"><a href="#定义Loss" class="headerlink" title="定义Loss"></a>定义Loss</h3><p><strong>Loss是一个函数$L(b,w)$，其中$w$和$w$是输入值，这个函数的输入是Model里面的参数。函数的输出值代表我们将输入值输入，输入的这组数值是好还是不好。</strong></p><p>$\widehat{y}$</p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;机器学习&quot;&gt;&lt;a href=&quot;#机器学习&quot; class=&quot;headerlink&quot; title=&quot;机器学习&quot;&gt;&lt;/a&gt;机器学习&lt;/h1&gt;&lt;h2 id=&quot;机器学习基本概念&quot;&gt;&lt;a href=&quot;#机器学习基本概念&quot; class=&quot;headerlink&quot; title=&quot;机
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Mysql</title>
+    <link href="http://yoursite.com/2021/05/20/Mysql/"/>
+    <id>http://yoursite.com/2021/05/20/Mysql/</id>
+    <published>2021-05-20T07:58:34.000Z</published>
+    <updated>2021-05-20T07:59:32.452Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><h2 id="1、初始数据库"><a href="#1、初始数据库" class="headerlink" title="1、初始数据库"></a>1、初始数据库</h2><h3 id="1-1、安装MySQL"><a href="#1-1、安装MySQL" class="headerlink" title="1.1、安装MySQL"></a>1.1、安装MySQL</h3><ol><li><p>下载压缩包</p></li><li><p>解压到自己想要安装的目录</p></li><li><p>添加环境变量</p><ol><li><p>我的电脑—属性—高级—环境变量</p></li><li><p>选择PATH，在后面添加mysql安装文件下的bin文件夹</p></li><li><p>在bin当前目录新建my.ini文件</p></li><li><p>编辑my.ini注意替换路径位置</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mysql]</span></span><br><span class="line"><span class="comment">#目录一定换成自己的</span></span><br><span class="line"><span class="attr">basedir</span>=E:\mysql\mysql-<span class="number">5.7</span>.<span class="number">23</span>\</span><br><span class="line"><span class="attr">datadir</span>=E:\mysql\mysql-<span class="number">5.7</span>.<span class="number">23</span>\data\</span><br><span class="line"><span class="attr">port</span>=<span class="number">3306</span></span><br><span class="line">skip-grant-tables</span><br></pre></td></tr></table></figure></li><li><p>管理员模式启动cmd，并将路径切换至mysql下的bin目录，然后输入mysqld -install</p><blockquote><p>重新安装mysql可能会出现数据库已经存在并报错此时使用 <code>mysqld remove</code> 然后再执行 <code>mysqld -install</code> 即可</p></blockquote></li><li><p>再输入<code>mysqld --initialize-insecure --user=mysql</code>初始化数据文件</p></li><li><p>然后再启动mysql 用命令<code>mysql -u root -p</code>进入mysql管理界面（密码可为空）</p></li><li><p>进入界面后更改root密码（sql语句后面一定要加分号）</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">updata mysql,user set authentication_string&#x3D;password(&#39;123456&#39;) where user&#x3D;&#39;root&#39; and Host&#x3D;&#39;localhost&#39;;</span><br></pre></td></tr></table></figure><p>最后输入flush privileges;刷新权限</p></li><li><p>修改my.ini文件删除最后一句skip-grant-atbles</p></li><li><p>重启mysql即可使用</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">net satrt mysql #启动数据库</span><br><span class="line">net stop mysql #停止数据库</span><br><span class="line">sc delete mysql #清空服务（安装出错时执行）</span><br></pre></td></tr></table></figure></li></ol></li></ol><ol><li>注释掉my.ini中最后一行，重启mysql，测试连接</li></ol><h3 id="1-2、连接数据库"><a href="#1-2、连接数据库" class="headerlink" title="1.2、连接数据库"></a>1.2、连接数据库</h3><p>命令行连接</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p123456 --连接数据库</span><br><span class="line"></span><br><span class="line">update mysql.user set authentication_string&#x3D;password(&#39;123456&#39;) where user&#x3D;&#39;root&#39; and Host&#x3D;&#39;localhost&#39;；--修改用户密码</span><br><span class="line">flush privileges; --刷新权限</span><br><span class="line"></span><br><span class="line">-- 所有语句都使用”;“结尾</span><br><span class="line">show datebases; --查看所有的数据库</span><br><span class="line"></span><br><span class="line">mysql&gt; use school --切换数据库</span><br><span class="line">datebasr changed --切换数据库use数据库名</span><br><span class="line"></span><br><span class="line">show table; --c</span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;MySQL&quot;&gt;&lt;a href=&quot;#MySQL&quot; class=&quot;headerlink&quot; title=&quot;MySQL&quot;&gt;&lt;/a&gt;MySQL&lt;/h1&gt;&lt;h2 id=&quot;1、初始数据库&quot;&gt;&lt;a href=&quot;#1、初始数据库&quot; class=&quot;headerlink&quot; title=
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>JavaWeb1</title>
@@ -39,32 +83,6 @@
     
     
       <category term="JavaWeb" scheme="http://yoursite.com/tags/JavaWeb/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>微信小程序</title>
-    <link href="http://yoursite.com/2021/01/24/wxxcx/"/>
-    <id>http://yoursite.com/2021/01/24/wxxcx/</id>
-    <published>2021-01-24T09:43:46.000Z</published>
-    <updated>2021-03-24T01:54:53.793Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/spoiler.css&quot; type=&quot;text/css&quot;&gt;&lt;script src=&quot;/js/spoiler.js&quot; type=&quot;text/javascript&quot; async&gt;&lt;/script&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="编程开发学习" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="微信小程序" scheme="http://yoursite.com/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
   </entry>
   
