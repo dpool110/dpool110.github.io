@@ -1,0 +1,233 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>秒杀项目 | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言博客自从搭起来零零碎碎的也写了点东西，但是都水的不行，依旧发挥了自己练习多年的CV大法，每篇看着都水的不行。最重要的是大部分都没有动脑子，缺少自己的想法，看着就不像自己的东西。 来培训了快半年了，东西嘛也多少学到点，就是还是和以前一样没有努力，Java基础、高级到后面框架，都是得过且过。欠的都是要还的，最近再学最后的秒杀项目，学到现在说实话，不懂，一点也不懂。本来打算周末的时候就着手写博客梳理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="秒杀项目">
+<meta property="og:url" content="http://example.com/2022/03/06/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/%E7%A7%92%E6%9D%80%E9%A1%B9%E7%9B%AE/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言博客自从搭起来零零碎碎的也写了点东西，但是都水的不行，依旧发挥了自己练习多年的CV大法，每篇看着都水的不行。最重要的是大部分都没有动脑子，缺少自己的想法，看着就不像自己的东西。 来培训了快半年了，东西嘛也多少学到点，就是还是和以前一样没有努力，Java基础、高级到后面框架，都是得过且过。欠的都是要还的，最近再学最后的秒杀项目，学到现在说实话，不懂，一点也不懂。本来打算周末的时候就着手写博客梳理">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2022-03-06T10:23:58.000Z">
+<meta property="article:modified_time" content="2022-10-31T01:49:43.422Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="SpringCloud">
+<meta property="article:tag" content="项目">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/03/06/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/%E7%A7%92%E6%9D%80%E9%A1%B9%E7%9B%AE/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '秒杀项目',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-31 09:49:43'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">秒杀项目</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-03-06T10:23:58.000Z" title="Created 2022-03-06 18:23:58">2022-03-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-10-31T01:49:43.422Z" title="Updated 2022-10-31 09:49:43">2022-10-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="秒杀项目"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>博客自从搭起来零零碎碎的也写了点东西，但是都水的不行，依旧发挥了自己练习多年的CV大法，每篇看着都水的不行。最重要的是大部分都没有动脑子，缺少自己的想法，看着就不像自己的东西。</p>
+<p>来培训了快半年了，东西嘛也多少学到点，就是还是和以前一样没有努力，Java基础、高级到后面框架，都是得过且过。欠的都是要还的，最近再学最后的秒杀项目，学到现在说实话，不懂，一点也不懂。本来打算周末的时候就着手写博客梳理、复习一下的，可是，我这该死的拖延症！！！！！</p>
+<p>不过现在能开始也不是太迟嘛（自我安慰我一直是可以的），接下来主要目标就是把这个秒杀项目搞懂，其中穿插一些复习，还有一个月就要去面试了，压力太大了，这次就好好加油吧。</p>
+<hr>
+<p>OK，让我把我男神刘少的视频打开再跟着他好好学习秒杀项目</p>
+<h2 id="秒杀项目介绍"><a href="#秒杀项目介绍" class="headerlink" title="秒杀项目介绍"></a>秒杀项目介绍</h2><p>前端-》请求-负载均衡（nginx）-网关(zuul)-&gt; eureka server-》配置（config-server）-》用户、商品、秒杀的微服务-消息中间件-websocket</p>
+<img src="https://s2.loli.net/2022/03/07/bUjRnYuGwyVe2xS.png" alt="image-20220307131823424"  />
+
+<p>首先是秒杀项目的基本内容，大体内容：负载均衡、网关、eureka、配置、不同的微服务、消息中间件、web socket。</p>
+<h2 id="项目搭建梳理"><a href="#项目搭建梳理" class="headerlink" title="项目搭建梳理"></a>项目搭建梳理</h2><blockquote>
+<p>秒杀项目和之前的所有项目都不同，秒杀项目创建时要创建父子级项目</p>
+<p>搭建微服务项目时，我们需要把公共的部分抽出来放在一个项目中，使用依赖的方式进行引用</p>
+</blockquote>
+<p>父项目：</p>
+<ul>
+<li><p><code>shop-parent [pom]</code></p>
+<p>子项目：</p>
+<ul>
+<li><p><code>eureka-server [jar]</code> 服务注册，可运行的项目就是jar</p>
+</li>
+<li><p><code>config-server [jar]</code> 配置中心，需要连接码云，配置信息放在码云上进行托管</p>
+</li>
+<li><p><code>zuul-server [jar]</code> 网关</p>
+</li>
+<li><p><code>shop-common [jar]</code> 公共部分</p>
+</li>
+<li><p><code>redis-spring-boot-start [jar]</code> 自定义的start，以前写过</p>
+</li>
+<li><p><code>shop-provider [pom]</code> </p>
+<p>子子项目</p>
+<ul>
+<li><code>member-server [jar]</code> 用户微服务</li>
+<li><code>good-server [jar]</code> 商品微服务</li>
+<li><code>seckill-server [jar]</code> 秒杀微服务</li>
+</ul>
+</li>
+<li><p><code>shop-provider-api [pom]</code> </p>
+<ul>
+<li><p><code>member-api[jar]</code> 用户微服务</p>
+</li>
+<li><p><code>good-api[jar]</code> 商品微服务</p>
+</li>
+<li><p><code>seckill-api[jar]</code> 秒杀微服务</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>其次就还有<code>fronted-server [jar]</code>前端和<code>websocket-server [jar]</code>消息通知中心两个项目，我们的秒杀项目就是由这些项目构成的。</p>
+<hr>
+<blockquote>
+<p>到这里我得停一下，短短的项目搭建梳理就开始😵了，这里先梳理一下有问题的地方。</p>
+</blockquote>
+<h3 id="秒杀项目到底是什么项目？"><a href="#秒杀项目到底是什么项目？" class="headerlink" title="秒杀项目到底是什么项目？"></a>秒杀项目到底是什么项目？</h3><blockquote>
+<p>要我现在说，我只能说秒杀项目就是微服务项目（spring cloud），那这样说之前学习的spring boot又是什么呢（秒杀项目中的启动类注解还有<code>@SpringBootApplication</code>😥）</p>
+</blockquote>
+<p>首先，我们要遵守程序，把spring boot 和 spring cloud两个基本概念找出来</p>
+<p><strong>spring boot</strong> 用来简化配置的它可以简化spring应用程序的创建和开发过程。</p>
+<p><strong>spring cloud</strong> 是分布式开发的解决方案，基于spring boot,在spring boot做较少的配置。</p>
+<p>看到这，反正我没太懂（之前基础太差，全忘了我🤡），能得出的结论是<strong>spring boot</strong> 和<strong>spring cloud</strong> 两者相辅相成（废话🤣）。</p>
+<p>百度找了一圈终于找到能让我理解的解释了：</p>
+<p><img src="https://s2.loli.net/2022/03/07/Qn8Bl3ZOMatwExT.png" alt="image-20220307175307436"></p>
+<blockquote>
+<p>说的一下就让我明白了，果然牛的人不是懂技术的，是懂技术，还能讲出来，并且能让小白听懂。这里的问题解决了，那在我们搭建的项目中<code>pom</code>和<code>jar</code>两者的关系又是什么呢😟？</p>
+</blockquote>
+<h3 id="项目中pom和jar两者的关系又是什么？"><a href="#项目中pom和jar两者的关系又是什么？" class="headerlink" title="项目中pom和jar两者的关系又是什么？"></a>项目中<code>pom</code>和<code>jar</code>两者的关系又是什么？</h3><p>刘少说的是<code>jar</code>是可以运行的项目，而<code>pom</code>项目不需要写Java代码，所以创建项目后<code>src</code>文件夹可以删除，而<code>pom</code>项目也不执行任何代码，只是为了聚合工程或传递依赖用的。</p>
+<h2 id="项目搭建"><a href="#项目搭建" class="headerlink" title="项目搭建"></a>项目搭建</h2><h3 id="父项目"><a href="#父项目" class="headerlink" title="父项目"></a>父项目</h3><h4 id="shop-parent"><a href="#shop-parent" class="headerlink" title="shop-parent"></a>shop-parent</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--当前为springboot项目--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.4.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.shop.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>shop-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">packaging</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span><span class="comment">&lt;!--当前项目为pom项目--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--spring-cloud.version 要找到对应的版本Greenwich.SR1--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">spring-cloud.version</span>&gt;</span>Greenwich.SR1<span class="tag">&lt;/<span class="name">spring-cloud.version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">&lt;!--版本仲裁--&gt;</span>    </span><br><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring-cloud.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">scope</span>&gt;</span>import<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<h3 id="子项目"><a href="#子项目" class="headerlink" title="子项目"></a>子项目</h3><h4 id="eureka-server"><a href="#eureka-server" class="headerlink" title="eureka-server"></a>eureka-server</h4><p><img src="https://s2.loli.net/2022/03/07/acGsFtLXnHQP7b3.png" alt="image-20220307213721670"></p>
+<p>当我们在父项目<code>shop-parent [pom]</code>下创建子项目时，父项目<code>pom.xml</code>中就会自动添加依赖，而子项目的<code>pom.xml</code>中也不需要写<code>spring boot</code>相关的依赖，由父项目传递相应的依赖（子承父业👶🧔）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--开启服务中心--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="application-yml"><a href="#application-yml" class="headerlink" title="application.yml"></a>application.yml</h5><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="comment"># 配置端口</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8761</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">  <span class="comment"># 应用实例主机名</span></span><br><span class="line">    <span class="attr">hostname:</span> <span class="string">localhost</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="comment"># 是否从Eureka获取注册信息</span></span><br><span class="line">    <span class="attr">fetch-registry:</span> <span class="literal">false</span></span><br><span class="line">    <span class="comment"># 是否向注册中心注册自己</span></span><br><span class="line">    <span class="attr">register-with-eureka:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="comment"># Eureka服务器的地址，类型为HashMap，缺省的Key为 defaultZone；缺省的Value为http://localhost:8761/eureka</span></span><br><span class="line">      <span class="comment"># 如果服务注册中心为高可用集群时，多个注册中心地址以逗号分隔。 </span></span><br><span class="line">      <span class="attr">defualtZone:</span> <span class="string">http://$&#123;eureka.instance.hostname&#125;:$&#123;server.port&#125;/eureka</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zyon/p/11023750.html">Spring Cloud Eureka 之常用配置解析</a></p>
+<h5 id="EurekaServerApp（服务注册与发现中心）"><a href="#EurekaServerApp（服务注册与发现中心）" class="headerlink" title="EurekaServerApp（服务注册与发现中心）"></a>EurekaServerApp（服务注册与发现中心）</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span> <span class="comment">//springboot启动类</span></span><br><span class="line"><span class="meta">@EnableEurekaServer</span> <span class="comment">//将项目作为SpringCloud中的注册中心</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EurekaServerApp</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(EurekaServerApp.class,args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>刚写完这些又去刷手机了，罪过罪过，还是要控制住自己，以上的是eureka.server项目中基本的配置，简单几个文件里就有好多迷惑的地方（真是欠的债都要慢慢还呀😩），简单说一下其中的困惑，慢慢去百度解决吧。</p>
+<p>父项目和子项目中<code>pom</code>配置与依赖还好，说是工作后不用自己写（希望吧😕就业压力山大），而其中<code>application.yml</code>的用处以及和之前的内容还有迷惑的地方，还有就是<code>EurekaServerApp</code>里面的两个注解，虽然知道他的用法，但是知道地详细点也没坏处（注解还得好好复习😵知其然还要知其所以然）</p>
+</blockquote>
+<h4 id="application-yml的用处"><a href="#application-yml的用处" class="headerlink" title="application.yml的用处"></a>application.yml的用处</h4><p>在<code>yml</code>之前使用最多的配置文件形式是<code>xml</code>和<code>properties</code>文件。<code>xml</code>文件太过繁琐，看过的人都知道，想要新加一个配置节点的话还需要包含在<code>&lt;&gt;</code>标签里；而<code>properties</code>配置文件没有了标签，不过当你的配置有很多层级的时候，写完之后你会发现会有大量重复的代码。而<code>yml/yaml</code>文件结合了两者的优势，当你新增节点配置的时候，不需要标签，在写多层级配置的时候也不会产生重复代码。</p>
+<h4 id="EurekaServerApp注解"><a href="#EurekaServerApp注解" class="headerlink" title="EurekaServerApp注解"></a>EurekaServerApp注解</h4><p>在这里就多说了<a target="_blank" rel="noopener" href="https://dpool110.github.io/2022/03/07/EurekaServerApp%E6%B3%A8%E8%A7%A3%E8%AF%A6%E8%A7%A3/">看这里</a></p>
+<h4 id="config-server"><a href="#config-server" class="headerlink" title="config-server"></a>config-server</h4></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/03/06/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/%E7%A7%92%E6%9D%80%E9%A1%B9%E7%9B%AE/">http://example.com/2022/03/06/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/%E7%A7%92%E6%9D%80%E9%A1%B9%E7%9B%AE/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a><a class="post-meta__tags" href="/tags/SpringCloud/">SpringCloud</a><a class="post-meta__tags" href="/tags/%E9%A1%B9%E7%9B%AE/">项目</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/03/07/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/EurekaServerApp%E6%B3%A8%E8%A7%A3%E8%AF%A6%E8%A7%A3/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">EurekaServerApp注解详解</div></div></a></div><div class="next-post pull-right"><a href="/2022/02/28/Java%E5%90%8E%E7%AB%AF/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E9%A2%98/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">面试题</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/03/07/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/EurekaServerApp%E6%B3%A8%E8%A7%A3%E8%AF%A6%E8%A7%A3/" title="EurekaServerApp注解详解"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-07</div><div class="title">EurekaServerApp注解详解</div></div></a></div><div><a href="/2020/10/14/Java%E5%90%8E%E7%AB%AF/Java%E5%9F%BA%E7%A1%80/java/" title="Java运算符"><img class="cover" src="https://i.loli.net/2020/07/27/d6gvZ4rhtlNHcjU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-14</div><div class="title">Java运算符</div></div></a></div><div><a href="/2021/09/22/Java%E5%90%8E%E7%AB%AF/Java%E5%9F%BA%E7%A1%80/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%8A%EF%BC%89/" title="Java面向对象（上）"><img class="cover" src="https://i.loli.net/2020/07/27/d6gvZ4rhtlNHcjU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-22</div><div class="title">Java面向对象（上）</div></div></a></div><div><a href="/2022/03/10/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/Dubbo/" title="Dubbo"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-10</div><div class="title">Dubbo</div></div></a></div><div><a href="/2022/02/25/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/SprinCloud%E7%86%94%E6%96%AD%E6%9C%BA%E5%88%B6/" title="SpringCloud——服务熔断"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-25</div><div class="title">SpringCloud——服务熔断</div></div></a></div><div><a href="/2020/10/16/Java%E5%90%8E%E7%AB%AF/Java%E5%9F%BA%E7%A1%80/java02/" title="Java程序流程控制与数组"><img class="cover" src="https://i.loli.net/2020/07/27/d6gvZ4rhtlNHcjU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-16</div><div class="title">Java程序流程控制与数组</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%92%E6%9D%80%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">秒杀项目介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E6%A2%B3%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">项目搭建梳理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%92%E6%9D%80%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88%E9%A1%B9%E7%9B%AE%EF%BC%9F"><span class="toc-number">3.1.</span> <span class="toc-text">秒杀项目到底是什么项目？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%B8%ADpom%E5%92%8Cjar%E4%B8%A4%E8%80%85%E7%9A%84%E5%85%B3%E7%B3%BB%E5%8F%88%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">3.2.</span> <span class="toc-text">项目中pom和jar两者的关系又是什么？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA"><span class="toc-number">4.</span> <span class="toc-text">项目搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%B6%E9%A1%B9%E7%9B%AE"><span class="toc-number">4.1.</span> <span class="toc-text">父项目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#shop-parent"><span class="toc-number">4.1.1.</span> <span class="toc-text">shop-parent</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E9%A1%B9%E7%9B%AE"><span class="toc-number">4.2.</span> <span class="toc-text">子项目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#eureka-server"><span class="toc-number">4.2.1.</span> <span class="toc-text">eureka-server</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#application-yml"><span class="toc-number">4.2.1.1.</span> <span class="toc-text">application.yml</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#EurekaServerApp%EF%BC%88%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0%E4%B8%AD%E5%BF%83%EF%BC%89"><span class="toc-number">4.2.1.2.</span> <span class="toc-text">EurekaServerApp（服务注册与发现中心）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#application-yml%E7%9A%84%E7%94%A8%E5%A4%84"><span class="toc-number">4.2.2.</span> <span class="toc-text">application.yml的用处</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#EurekaServerApp%E6%B3%A8%E8%A7%A3"><span class="toc-number">4.2.3.</span> <span class="toc-text">EurekaServerApp注解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#config-server"><span class="toc-number">4.2.4.</span> <span class="toc-text">config-server</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/10/28/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/" title="链表"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="链表"/></a><div class="content"><a class="title" href="/2022/10/28/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/" title="链表">链表</a><time datetime="2022-10-28T01:41:40.000Z" title="Created 2022-10-28 09:41:40">2022-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%A5%87%E6%80%AA%E7%9A%84%E5%A3%B0%E6%98%8E/" title="C语言奇怪的声明"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言奇怪的声明"/></a><div class="content"><a class="title" href="/2022/10/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%A5%87%E6%80%AA%E7%9A%84%E5%A3%B0%E6%98%8E/" title="C语言奇怪的声明">C语言奇怪的声明</a><time datetime="2022-10-25T10:06:08.000Z" title="Created 2022-10-25 18:06:08">2022-10-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/21/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA/" title="C语言内存分区"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言内存分区"/></a><div class="content"><a class="title" href="/2022/10/21/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA/" title="C语言内存分区">C语言内存分区</a><time datetime="2022-10-21T11:02:01.000Z" title="Created 2022-10-21 19:02:01">2022-10-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/19/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="排序算法"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="排序算法"/></a><div class="content"><a class="title" href="/2022/10/19/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="排序算法">排序算法</a><time datetime="2022-10-19T12:15:20.000Z" title="Created 2022-10-19 20:15:20">2022-10-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/17/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80(3)-%E6%8C%87%E9%92%88/" title="C语言基础(3)-指针"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言基础(3)-指针"/></a><div class="content"><a class="title" href="/2022/10/17/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80(3)-%E6%8C%87%E9%92%88/" title="C语言基础(3)-指针">C语言基础(3)-指针</a><time datetime="2022-10-17T01:04:28.000Z" title="Created 2022-10-17 09:04:28">2022-10-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
