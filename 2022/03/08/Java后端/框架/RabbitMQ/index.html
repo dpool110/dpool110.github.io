@@ -1,0 +1,312 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>RabbitMQ | 不愿努力的帅洋</title><meta name="author" content="陈子洋"><meta name="copyright" content="陈子洋"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="RabbitMQ 这两天学习RabbitMQ，还是一知半解，现在想想根本不知道这玩意是干啥的（刘少还没讲应用）。别说应用了，这玩意课上简单的demo敲完我都一脸懵😵，所以还是好好梳理一下概念和demo的流程（这里说是很值钱💴）。  简介在说RabbitMQ前，先和我们说了AMQP（高级消息队列协议），一个提供统一消息服务的应用层标准高级消息队列协议，是应用层协议的一个开放标准，为面向消息的中间">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RabbitMQ">
+<meta property="og:url" content="http://example.com/2022/03/08/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/RabbitMQ/index.html">
+<meta property="og:site_name" content="不愿努力的帅洋">
+<meta property="og:description" content="RabbitMQ 这两天学习RabbitMQ，还是一知半解，现在想想根本不知道这玩意是干啥的（刘少还没讲应用）。别说应用了，这玩意课上简单的demo敲完我都一脸懵😵，所以还是好好梳理一下概念和demo的流程（这里说是很值钱💴）。  简介在说RabbitMQ前，先和我们说了AMQP（高级消息队列协议），一个提供统一消息服务的应用层标准高级消息队列协议，是应用层协议的一个开放标准，为面向消息的中间">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/03/01/EQFS7h3Ud5ZpwxI.jpg">
+<meta property="article:published_time" content="2022-03-08T08:49:53.000Z">
+<meta property="article:modified_time" content="2022-10-31T01:49:43.425Z">
+<meta property="article:author" content="陈子洋">
+<meta property="article:tag" content="Spring Cloud">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/03/01/EQFS7h3Ud5ZpwxI.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/03/08/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/RabbitMQ/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'RabbitMQ',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-31 09:49:43'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2022/03/01/EQFS7h3Ud5ZpwxI.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">不愿努力的帅洋</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">RabbitMQ</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-08T08:49:53.000Z" title="发表于 2022-03-08 16:49:53">2022-03-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-31T01:49:43.425Z" title="更新于 2022-10-31 09:49:43">2022-10-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="RabbitMQ"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h1><blockquote>
+<p>这两天学习RabbitMQ，还是一知半解，现在想想根本不知道这玩意是干啥的（刘少还没讲应用）。别说应用了，这玩意课上简单的demo敲完我都一脸懵😵，所以还是好好梳理一下概念和demo的流程（这里说是很值钱💴）。</p>
+</blockquote>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>在说RabbitMQ前，先和我们说了AMQP（高级消息队列协议），<span alt="hide"><del>一个提供统一消息服务的应用层标准高级消息队列协议，是应用层协议的一个开放标准，为面向消息的中间件设计。基于此协议的客户端与消息中间件可传递消息，并不受客户端/中间件不同产品，不同的开发语言等条件的限制。</del></span></p>
+<p>这一大堆的介绍是一句听不懂，不过RabbitMQ其实就是一个实现了AMQP的开源的<strong>消息中间件</strong>，使用高性能的Erlang编写的。</p>
+<blockquote>
+<p>上面有两个概念刚听到的时候不是太理解，<strong>消息队列</strong>和<strong>消息中间件</strong>。我直接百度一下，万能的百度没有你我可咋办呀🧡💛💚💚💙💙💜🤎💖</p>
+</blockquote>
+<h3 id="什么是消息队列？"><a href="#什么是消息队列？" class="headerlink" title="什么是消息队列？"></a>什么是消息队列？</h3><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/54152397?sort=created">看这里</a></p>
+<blockquote>
+<p>大佬就是不一样，这种娓娓道来的感觉是真的让我佩服。以后再看见消息队列心里就默念异步、削峰、解耦（异步、削峰、解耦；异步、削峰、解耦…背他个100遍先😠）。</p>
+<p>消息队列简单的说就是把消息放在队列中，其本身就是一个中间件，那什么是消息、什么是队列呢？</p>
+<p><strong>消息就是我们需要传递的数据，而队列就是一种先进先出的数据结构。</strong>简单关联一下我们做的项目，有些数据我们接收后需要传递，传递到某些功能的队列中，根据队列中不同功能的执行顺序依次执行（还是比较模糊😵）</p>
+<p>实际上消息队列和消息中间件是一回事。从实现上来说，它是一个消息的“队列”，把它放到系统里，它就成为了一个中间件。简单说消息队列是概念，消息中间件就是实现概念的产出。</p>
+<p>PS： </p>
+<p><strong>provider</strong><br>   消息的生产者,就是投递消息的程序</p>
+<p><strong>consumer</strong><br>   消息的消费者,就是接收消息的程序</p>
+</blockquote>
+<h2 id="RabbitMQ简单demo"><a href="#RabbitMQ简单demo" class="headerlink" title="RabbitMQ简单demo"></a>RabbitMQ简单demo</h2><p>我们使用RabbitMQ前需要在Linux上进行下载</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">查找镜像</span><br><span class="line">docker search rabbitmq:management</span><br><span class="line"></span><br><span class="line">拉取镜像</span><br><span class="line">docker pull macintoshplus/rabbitmq-management</span><br><span class="line"></span><br><span class="line"> 查看镜像</span><br><span class="line"> docker images</span><br><span class="line"> </span><br><span class="line"> 运行</span><br><span class="line"> docker run -d --hostname chenziyang --name rabbitmq -e RABBITMQ_USER=guest -e RABBITMQ_PASS=guest -p 15672:15672 -p 5672:5672 c20</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在Linux上安装完docker后按照步骤一顿复制粘贴就行😂，最后返回一段看不懂的数据就可以</p>
+<p><a target="_blank" rel="noopener" href="http://192.168.145.128:15672/#/">http://192.168.145.128:15672/#/</a></p>
+<p>返回成功后进入网页如果能成功进入我们就完成了第一步（其中192.168…这个地址要是你Linux的端口号）</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2022/03/08/hxapEswkyPTzoRQ.png" alt="image-20220308190748744"></p>
+<p>接着我们开始进行配置</p>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>在pom.xml中我们要导入RabbitMQ的依赖，还要注意Spring Boot版本号，这里用的是2.5.7，太高的版本可能会出现问题。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--RabbitMQ依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-amqp<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>application.properties</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 项目名（可以自定义）</span></span><br><span class="line"><span class="attr">pring.application.name</span>=<span class="string">rabbitmq-demo01</span></span><br><span class="line"><span class="comment"># 连接虚拟机中的mq，写自己虚拟机的ip</span></span><br><span class="line"><span class="attr">spring.rabbitmq.host</span>=<span class="string">192.168.145.128</span></span><br><span class="line"><span class="comment"># 指定端口号</span></span><br><span class="line"><span class="attr">spring.rabbitmq.port</span>=<span class="string">5672</span></span><br><span class="line"><span class="comment"># 账号密码</span></span><br><span class="line"><span class="attr">spring.rabbitmq.username</span>=<span class="string">guest</span></span><br><span class="line"><span class="attr">spring.rabbitmq.password</span>=<span class="string">guest</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 自定义属性 没有感知</span></span><br><span class="line"><span class="attr">mq.queue.name</span>=<span class="string">hello-queue</span></span><br></pre></td></tr></table></figure>
+
+<p>当我们创建RabbitMQ容器时<code>docker run -d --hostname chenziyang --name rabbitmq -e RABBITMQ_USER=guest -e RABBITMQ_PASS=guest -p 15672:15672 -p 5672:5672 c20</code>中15672是提供给web使用，而5672提供个idea使用，账号和密码在创建容器时也已经指定。</p>
+<h3 id="Java代码"><a href="#Java代码" class="headerlink" title="Java代码"></a>Java代码</h3><p><strong>消息队列配置类QueueConfig</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * QueueConfig</span></span><br><span class="line"><span class="comment"> * 消息队列配置类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 陈子洋</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> * 2022-03-08 16:43</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">QueueConfig</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//队列的名字，名字使用$&#123;&#125;从配置文件中获取</span></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;mq.queue.name&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String queueName;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//对应的包：org.springframework.amqp.core.Queue</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> Queue <span class="title function_">creatQueue</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Queue</span>(queueName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>创建队列方法中<code>Queue</code>就是声明创建一个名字为<code>queueName</code>的队列，之后发送方<code>provider</code>将信息放到队列中，接收方<code>consumer</code>从队列中读取消息。</p>
+<p><strong>消息生产者类Sender</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Sender</span></span><br><span class="line"><span class="comment"> * 消息的生产者，就是投递信息的程序</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 陈子洋</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> * 2022-03-08 16:48</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Sender</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//消息队列的模板</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> AmqpTemplate template;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取name</span></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;mq.queue.name&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String queueName;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 发送消息的方法</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> msg</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">send</span><span class="params">(String msg)</span>&#123;</span><br><span class="line">        template.convertAndSend(queueName,msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面的类就是消息的生产者，还是老样子，先说一说里面不明白的地方吧。</p>
+<p>首先，我们给这个类一个注解<code>@Component</code>，虽然大概知道是标记这个类是什么类型，但是具体的还是不太清楚（都是曾经欠下的帐😭），然后就是<code>AmqpTemplate</code>，对于template之前好像也使用过，但是根本不明白他的用途（好像说这个类似于springMVC的内容）最后还有个好像是新的注释<code>@Value</code></p>
+<blockquote>
+<p><strong>AmqpTemplate</strong></p>
+<p>指定一组基本的 AMQP 操作。提供同步发送和接收方法。<code>convertAndSend(Object)</code>and <code>receiveAndConvert()</code>方法允许您发送和接收 POJO 对象。实现应该委托给一个实例<code>MessageConverter</code>来执行与 AMQP byte[] 有效负载类型之间的转换。</p>
+<p>上面是官方API的解释，Template本意也是模板的意思，那这个就可以大体理解了，后面再详细看看。    </p>
+<h5 id="Component"><a href="#Component" class="headerlink" title="@Component"></a>@Component</h5><p>@Component就是spring中的一个注解，作用就是实现bean的注入</p>
+</blockquote>
+</blockquote>
+<p><strong>消息接收者类Receive</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Receive</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 接收消息 然后处理消息</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> msg</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="comment">//监听队列</span></span><br><span class="line">    <span class="meta">@RabbitListener(queues = &quot;$&#123;mq.queue.name&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(String msg)</span>&#123;</span><br><span class="line">        <span class="comment">//处理消息</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Receive&quot;</span>+msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 通过Application启动在RabbitMQ网页上可以看队列的信息说明启动成功。</p>
+<p><strong>测试类</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ApplicationTests</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> Sender sender;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">contextLoads</span><span class="params">()</span> &#123;</span><br><span class="line">        sender.send(<span class="string">&quot;你好...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行测试类，在控制台中就可以看到输出的信息</p>
+<blockquote>
+<p>其实这样看看也不是太难（毕竟是第一个例子）</p>
+<ol>
+<li>消息队列配置类（QueueConfig）中新建了一个名为<code>hello-queue</code>的queue队列，这个名字是我们在<code>application.properties</code>中自定义的属性，在<code>QueueConfig</code>中通过<code>@Value</code>注解通过key值获取。</li>
+<li>在消息生产者类（Sender）类中，通过消息队列模板<code>AmqpTemplate</code>中的方法将要发送的信息打包好发送出去</li>
+<li>消息接收者类通过<code>@RabbitListener</code>注解监听队列名，接收消息</li>
+<li>消息在测试类中，注入消息生产者类，输入要传递的消息</li>
+</ol>
+<blockquote>
+<p>感觉直接去梳理流程太慢了，跟不上课程了，还是先把其中的原理搞清楚，抽空再把流程写出来，还能复习一下。（这两天的东西都没有完成，不能拆东墙补西墙，合理分配时间💪）</p>
+</blockquote>
+</blockquote>
+<h2 id="RabbitMQ工作原理"><a href="#RabbitMQ工作原理" class="headerlink" title="RabbitMQ工作原理"></a>RabbitMQ工作原理</h2><p><img src="https://s2.loli.net/2022/03/09/LOXzaGik36B1RuW.png" alt="image-20220309162532777"></p>
+<p><img src="https://s2.loli.net/2022/03/09/yR1YLjEVpQIbdzl.png"></p>
+<blockquote>
+<p>上面两张图片就是RabbitMQ的工作原理图图片上的概念，我们要稍微梳理一下</p>
+</blockquote>
+<h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>Message</strong></td>
+<td>消息 消息是不具名的 它是由消息头和主体组成，消息体不透明 消息头是由一系列的属性组成<code>routing-key</code>（路由键）、优先权、消息的存储(永久的)</td>
+</tr>
+<tr>
+<td align="center"><strong>provider (Publisher)</strong></td>
+<td>消息的生产者,就是投递消息的程序</td>
+</tr>
+<tr>
+<td align="center"><strong>consumer</strong></td>
+<td>消息的消费者,就是接收消息的程序</td>
+</tr>
+<tr>
+<td align="center"><strong>Exchange</strong></td>
+<td>交换器 用来接收生产者发送的消息，将消息路由给服务器中的队列<br/>  三种类型：<br/>    1.订阅与发布 direct<br/>    2.广播 fanout<br/>    3.主题，规则匹配 topic</td>
+</tr>
+<tr>
+<td align="center"><strong>Binding</strong></td>
+<td>绑定消息队列和交换器之间的关联</td>
+</tr>
+<tr>
+<td align="center"><strong>Queue</strong></td>
+<td>消息队列  用来保存消息最终发给消费者</td>
+</tr>
+<tr>
+<td align="center"><strong>Routing-key</strong></td>
+<td>路由键 RabbitMQ决定消息投递到哪个队列的规则</td>
+</tr>
+<tr>
+<td align="center"><strong>Connection</strong></td>
+<td>链接，rabbit和服务器之间建立的tcp 链接</td>
+</tr>
+<tr>
+<td align="center"><strong>Channel</strong></td>
+<td>信道 TCP中的虚拟链接，TCP就被打开，就会创建AMQP，无论是发布、接收、订阅等都是通过信道完成的</td>
+</tr>
+<tr>
+<td align="center"><strong>Broker</strong></td>
+<td>消息队列服务的实体</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>上面大部分的概念理解起来还是不困难的，最困扰我的还是两个key和Exchange交换器，不知道具体是有什么用处，我们还是先捋一下RabbitMQ这些名词的意思吧。<a target="_blank" rel="noopener" href="https://blog.csdn.net/xinbaobaoer/article/details/54907793">参考文章</a></p>
+</blockquote>
+<p>RabbitMQ其实就是一个实现了AMQP的开源的<strong>消息中间件</strong>，再通俗点就是RabbitMQ是消息队列的一种实现。所以我们要围绕队列（queue）来阐述不明白的RabbitMQ中各种名词的含义。</p>
+<p><strong>Exchange</strong>：我们需要让queue都接收到生产者发送的消息时，不可能给每个queue都发送一次消息，而且这样做肯定会造成资源的浪费。所以我们需要想出一种解决方法，给RabbitMQ一个规则，让它自己去解析需要给哪个队列发送消息。Exchange就是干这件事的，这里的规则就对应上面Exchange常用的三种类型。</p>
+<blockquote>
+<p><strong>RabbitMQ为什么需要信道？ 为什么不是TCP 直接通道?</strong></p>
+<ol>
+<li><strong>TCP的创建和销毁开销特别大</strong>，创建需要3次握手，销毁需要4次分手！</li>
+<li>如果不用信道，应用程序就会以tcp方式进行链接，高峰时段每秒数以万计造成巨大的<strong>资源浪费</strong>，而且操作系统每秒钟处理TCP的数量是有限的，就会产生性能的瓶颈。</li>
+<li>信道的原理是一个线程一条通道，多个线程多条通道同用一条TCP链接，一条TCP链接可以容纳无限的信道，请求量过大不会称为<strong>性能瓶颈</strong>。</li>
+</ol>
+</blockquote>
+<h3 id="交换器Exchange"><a href="#交换器Exchange" class="headerlink" title="交换器Exchange"></a><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/37198933">交换器Exchange</a></h3><p>我们上面说了Exchange是一种规则，向队列queue发送消息的一种规则。<strong>那么为什么我们需要 Exchange 而不是直接将消息发送至队列呢？</strong></p>
+<blockquote>
+<p>在实际应用中我们只需要定义好 Exchange 的<strong>路由策略</strong>，而生产者则不需要关心消息会发送到哪个 Queue 或被哪些 Consumer 消费。在这种模式下生产者只面向 Exchange 发布消息，消费者只面向 Queue 消费消息，Exchange 定义了消息路由到 Queue 的规则，将各个层面的消息传递隔离开，使每一层只需要关心自己面向的下一层，<strong>降低了整体的耦合度</strong>。</p>
+</blockquote>
+<h3 id="理解-Exchange"><a href="#理解-Exchange" class="headerlink" title="理解 Exchange"></a>理解 Exchange</h3><p><strong>Exchange 收到消息时，他是如何知道需要发送至哪些 Queue 呢？</strong>这里就需要了解 Binding 和 RoutingKey 的概念：</p>
+<blockquote>
+<p>Binding 表示 Exchange 与 Queue 之间的关系，我们也可以简单的认为队列对该交换机上的消息感兴趣，绑定可以附带一个额外的参数 RoutingKey。Exchange 就是根据这个 RoutingKey 和当前 Exchange 所有绑定的 Binding 做匹配，如果满足匹配，就往 Exchange 所绑定的 Queue 发送消息，这样就解决了我们向 RabbitMQ 发送一次消息，可以分发到不同的 Queue。RoutingKey 的意义依赖于交换机的类型。</p>
+</blockquote>
+<p>下面就来了解一下 Exchange 的三种主要类型：<code>Fanout</code>、<code>Direct</code> 和 <code>Topic</code>。</p>
+<h4 id="发布与订阅-direct"><a href="#发布与订阅-direct" class="headerlink" title="发布与订阅 direct"></a>发布与订阅 direct</h4><p>也叫完全匹配，如图</p>
+<p><img src="https://s2.loli.net/2022/03/09/6DBAEqlC3M1Z7Gn.png" alt="image-20220309183419779"></p>
+<p>Direct Exchange 是 RabbitMQ 默认的 Exchange，完全根据 routing-key来路由消息。设置 交换器（Exchange） 和队列（Queue）的Binding时需指定routing-key（一般为 queueName），发消息时也指定一样的 routing-key，消息就会被路由到对应的Queue。从别名完全匹配也可以看出来direct的特点，就是精确匹配，routing-key和对应的路由一一匹配。</p>
+<blockquote>
+<p><strong>应用场景</strong></p>
+<p>现在我们考虑只把重要的日志消息写入磁盘文件，例如只把 Error 级别的日志发送给负责记录写入磁盘文件的 Queue。这种场景下我们可以使用指定的 RoutingKey（例如 error）将写入磁盘文件的 Queue 绑定到 Direct Exchange 上。</p>
+</blockquote>
+<h4 id="广播-fanout"><a href="#广播-fanout" class="headerlink" title="广播 fanout"></a>广播 fanout</h4><p>Fanout Exchange 会忽略 RoutingKey 的设置，直接将 Message 广播到所有绑定的 Queue 中。</p>
+<p><img src="https://s2.loli.net/2022/03/12/zHT9n7Xas4MZ8l6.png" alt="image-20220312141625921"></p>
+<blockquote>
+<p><strong>应用场景</strong></p>
+<p>以日志系统为例：假设我们定义了一个 Exchange 来接收日志消息，同时定义了两个 Queue 来存储消息：一个记录将被打印到控制台的日志消息；另一个记录将被写入磁盘文件的日志消息。我们希望 Exchange 接收到的每一条消息都会同时被转发到两个 Queue，这种场景下就可以使用 Fanout Exchange 来广播消息到所有绑定的 Queue。</p>
+</blockquote>
+<h4 id="主题规则匹配-topic"><a href="#主题规则匹配-topic" class="headerlink" title="主题规则匹配 topic"></a>主题规则匹配 topic</h4><p><img src="https://s2.loli.net/2022/03/12/bkFI91rf2ViMzQm.png" alt="image-20220312110041041"></p>
+<p>Topic Exchange 和 Direct Exchange 类似，也需要通过 RoutingKey 来路由消息，区别在于Direct Exchange 对 RoutingKey 是精确匹配，而 Topic Exchange 支持模糊匹配。分别支持<code>*</code>和<code>#</code>通配符，<code>*</code>表示匹配一个单词，<code>#</code>则表示匹配没有或者多个单词。</p>
+<blockquote>
+<p><strong>应用场景</strong></p>
+<p>假设我们的消息路由规则除了需要根据日志级别来分发之外还需要根据消息来源分发，可以将 RoutingKey 定义为 <code>消息来源.级别</code> 如 <code>order.info</code>、<code>user.error</code>等。处理所有来源为 <code>user</code> 的 Queue 就可以通过 <code>user.*</code> 绑定到 Topic Exchange 上，而处理所有日志级别为 <code>info</code> 的 Queue 可以通过 <code>*.info</code> 绑定到 Exchange上。</p>
+</blockquote>
+<h2 id="Rabbit高级"><a href="#Rabbit高级" class="headerlink" title="Rabbit高级"></a>Rabbit高级</h2><h3 id="Rabbit-消息持久化"><a href="#Rabbit-消息持久化" class="headerlink" title="Rabbit 消息持久化"></a>Rabbit 消息持久化</h3><p>如果我们希望即使在RabbitMQ服务重启的情况下，也不会丢失消息，我们可以将Queue与Message都设置为可持久化的（durable），这样可以保证绝大部分情况下我们的RabbitMQ消息不会丢失。当然还是会有一些小概率事件会导致消息丢失。</p>
+<h3 id="Ack"><a href="#Ack" class="headerlink" title="Ack"></a>Ack</h3></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">陈子洋</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/03/08/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/RabbitMQ/">http://example.com/2022/03/08/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/RabbitMQ/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">不愿努力的帅洋</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Spring-Cloud/">Spring Cloud</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2022/03/01/EQFS7h3Ud5ZpwxI.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/03/10/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/Dubbo/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Dubbo</div></div></a></div><div class="next-post pull-right"><a href="/2022/03/07/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/EurekaServerApp%E6%B3%A8%E8%A7%A3%E8%AF%A6%E8%A7%A3/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">EurekaServerApp注解详解</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">陈子洋</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RabbitMQ"><span class="toc-number">1.</span> <span class="toc-text">RabbitMQ</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%EF%BC%9F"><span class="toc-number">1.1.1.</span> <span class="toc-text">什么是消息队列？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RabbitMQ%E7%AE%80%E5%8D%95demo"><span class="toc-number">1.2.</span> <span class="toc-text">RabbitMQ简单demo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.1.</span> <span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E4%BB%A3%E7%A0%81"><span class="toc-number">1.2.2.</span> <span class="toc-text">Java代码</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Component"><span class="toc-number">1.2.2.0.1.</span> <span class="toc-text">@Component</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RabbitMQ%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.3.</span> <span class="toc-text">RabbitMQ工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A"><span class="toc-number">1.3.1.</span> <span class="toc-text">名词解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E5%99%A8Exchange"><span class="toc-number">1.3.2.</span> <span class="toc-text">交换器Exchange</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%90%86%E8%A7%A3-Exchange"><span class="toc-number">1.3.3.</span> <span class="toc-text">理解 Exchange</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E4%B8%8E%E8%AE%A2%E9%98%85-direct"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">发布与订阅 direct</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%BF%E6%92%AD-fanout"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">广播 fanout</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98%E8%A7%84%E5%88%99%E5%8C%B9%E9%85%8D-topic"><span class="toc-number">1.3.3.3.</span> <span class="toc-text">主题规则匹配 topic</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rabbit%E9%AB%98%E7%BA%A7"><span class="toc-number">1.4.</span> <span class="toc-text">Rabbit高级</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Rabbit-%E6%B6%88%E6%81%AF%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">1.4.1.</span> <span class="toc-text">Rabbit 消息持久化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ack"><span class="toc-number">1.4.2.</span> <span class="toc-text">Ack</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/10/28/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/" title="链表"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="链表"/></a><div class="content"><a class="title" href="/2022/10/28/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/" title="链表">链表</a><time datetime="2022-10-28T01:41:40.000Z" title="发表于 2022-10-28 09:41:40">2022-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%A5%87%E6%80%AA%E7%9A%84%E5%A3%B0%E6%98%8E/" title="C语言奇怪的声明"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言奇怪的声明"/></a><div class="content"><a class="title" href="/2022/10/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%A5%87%E6%80%AA%E7%9A%84%E5%A3%B0%E6%98%8E/" title="C语言奇怪的声明">C语言奇怪的声明</a><time datetime="2022-10-25T10:06:08.000Z" title="发表于 2022-10-25 18:06:08">2022-10-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/21/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA/" title="C语言内存分区"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言内存分区"/></a><div class="content"><a class="title" href="/2022/10/21/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA/" title="C语言内存分区">C语言内存分区</a><time datetime="2022-10-21T11:02:01.000Z" title="发表于 2022-10-21 19:02:01">2022-10-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/19/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="排序算法"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="排序算法"/></a><div class="content"><a class="title" href="/2022/10/19/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="排序算法">排序算法</a><time datetime="2022-10-19T12:15:20.000Z" title="发表于 2022-10-19 20:15:20">2022-10-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/17/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80(3)-%E6%8C%87%E9%92%88/" title="C语言基础(3)-指针"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言基础(3)-指针"/></a><div class="content"><a class="title" href="/2022/10/17/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80(3)-%E6%8C%87%E9%92%88/" title="C语言基础(3)-指针">C语言基础(3)-指针</a><time datetime="2022-10-17T01:04:28.000Z" title="发表于 2022-10-17 09:04:28">2022-10-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 陈子洋</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

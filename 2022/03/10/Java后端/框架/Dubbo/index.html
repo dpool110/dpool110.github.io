@@ -1,0 +1,204 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Dubbo | 不愿努力的帅洋</title><meta name="author" content="陈子洋"><meta name="copyright" content="陈子洋"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="DubboDubbo是什么?Dubbo是阿里巴巴公司开源的一个高性能优秀的服务框架，使得应用可通过高性能的 RPC 实现服务的输出和输入功能，可以和Spring框架无缝集成。Dubbo是一款高性能、轻量级的开源Java RPC框架，它提供了三大核心能力：面向接口的远程方法调用，智能容错和负载均衡，以及服务自动注册和发现。  又是一个框架😵，每次学习框架都感觉学不明白，可能和学习的方式有关系。对于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dubbo">
+<meta property="og:url" content="http://example.com/2022/03/10/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/Dubbo/index.html">
+<meta property="og:site_name" content="不愿努力的帅洋">
+<meta property="og:description" content="DubboDubbo是什么?Dubbo是阿里巴巴公司开源的一个高性能优秀的服务框架，使得应用可通过高性能的 RPC 实现服务的输出和输入功能，可以和Spring框架无缝集成。Dubbo是一款高性能、轻量级的开源Java RPC框架，它提供了三大核心能力：面向接口的远程方法调用，智能容错和负载均衡，以及服务自动注册和发现。  又是一个框架😵，每次学习框架都感觉学不明白，可能和学习的方式有关系。对于">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2022-03-10T01:09:27.000Z">
+<meta property="article:modified_time" content="2022-10-31T01:49:43.416Z">
+<meta property="article:author" content="陈子洋">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Dubbo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/03/10/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/Dubbo/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Dubbo',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-31 09:49:43'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">不愿努力的帅洋</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Dubbo</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-10T01:09:27.000Z" title="发表于 2022-03-10 09:09:27">2022-03-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-31T01:49:43.416Z" title="更新于 2022-10-31 09:49:43">2022-10-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Dubbo"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Dubbo"><a href="#Dubbo" class="headerlink" title="Dubbo"></a>Dubbo</h1><h2 id="Dubbo是什么"><a href="#Dubbo是什么" class="headerlink" title="Dubbo是什么?"></a>Dubbo是什么?</h2><p>Dubbo是阿里巴巴公司开源的一个高性能优秀的<strong>服务框架</strong>，使得应用可通过高性能的 <strong>RPC</strong> 实现服务的输出和输入功能，可以和Spring框架无缝集成。<br>Dubbo是一款高性能、轻量级的开源Java RPC框架，它提供了三大核心能力：<strong>面向接口的远程方法调用</strong>，<strong>智能容错和负载均衡</strong>，以及<strong>服务自动注册和发现</strong>。</p>
+<blockquote>
+<p>又是一个框架😵，每次学习框架都感觉学不明白，可能和学习的方式有关系。对于框架还是没有本质的认识，使用来说也没有感觉，脑子里没有框架的思想，所以感觉寸步难行。之前的框架还没有开始复习，现在从Dubbo的学习来找点感觉吧。</p>
+<p>看完基本介绍，想要继续下去，我们先要解决<strong>什么是RPC？</strong>这个问题。    </p>
+</blockquote>
+<h3 id="RPC是什么"><a href="#RPC是什么" class="headerlink" title="RPC是什么"></a>RPC是什么</h3><p><em>RPC是<strong>远程过程调用</strong>（Remote Procedure Call）的缩写形式。</em>远程调用对立的就是本地调用，我们之前学习Java时，实现一个个方法之间的调用，这个就是本地调用。再通俗点，就是从你本机上调用方法就是本地调用，而你在本地调用了其他地方机器上的某个方法就是远程调用。 <strong>RPC 框架就是要实现像那小助手一样的东西，目的就是让我们使用远程调用像本地调用一样简单方便，并且解决一些远程调用会发生的一些问题。</strong></p>
+<blockquote>
+<p>RPC底层的的核心技术是<strong>序列化和反序列化</strong></p>
+<ol>
+<li>生产者<strong>发布服务</strong></li>
+<li>消费者按照RPC协议<strong>调用</strong>生产者发布的服务</li>
+<li>生产者<strong>执行方法</strong>得到返回的对象</li>
+<li>生产者将对象<strong>序列化</strong>后返回给消费者</li>
+<li>消费者接收数据后<strong>反序列化</strong>，得到Java对象</li>
+</ol>
+</blockquote>
+<p><img src="https://s2.loli.net/2022/03/10/QYrBbzvSiD2Hd5T.png" alt="image-20220310184149676"></p>
+<h3 id="Dubbo工作原理"><a href="#Dubbo工作原理" class="headerlink" title="Dubbo工作原理"></a>Dubbo工作原理</h3><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly90dmExLnNpbmFpbWcuY24vbGFyZ2UvMDA3UzhaSWxseTFnaHU5N250c2FjajMwZTAwYWszeXguanBn?x-oss-process=image/format,png" alt="img"></p>
+<ol>
+<li>生产者<strong>启动Dubbo容器</strong> ，生产服务对象</li>
+<li>生产者把生成的服务<strong>发布到注册中心</strong></li>
+<li>消费者向注册中心<strong>订阅服务</strong>，把发布的<strong>服务下载</strong>到本地缓存，订阅服务后，本地缓存会<strong>自动更新生产者发布的服务</strong></li>
+<li>当消费者需要调用服务时，按照RPC协议要求，<strong>向生产者发起服务调用</strong></li>
+<li>生产者将对象交给Dubbo 容器进行<strong>序列化处理</strong>后给消费者</li>
+<li>消费者接收返回的数据对其<strong>反序列化</strong>，得到Java对象</li>
+<li>监视器对服务性能做监控统计</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">节点</th>
+<th align="center">角色说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Provider</td>
+<td align="center">暴露服务的服务提供方</td>
+</tr>
+<tr>
+<td align="center">Consumer</td>
+<td align="center">调用远程服务的服务消费方</td>
+</tr>
+<tr>
+<td align="center">Registry</td>
+<td align="center">服务注册与发现的注册中心</td>
+</tr>
+<tr>
+<td align="center">Monitor</td>
+<td align="center">统计服务的调用次数和调用时间的监控中心</td>
+</tr>
+<tr>
+<td align="center">Container</td>
+<td align="center">服务运行容器</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注册中心Registry和监控中心Monitor都不是必须的，可以缺少</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">陈子洋</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/03/10/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/Dubbo/">http://example.com/2022/03/10/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/Dubbo/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">不愿努力的帅洋</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a><a class="post-meta__tags" href="/tags/Dubbo/">Dubbo</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/03/24/%E6%95%B0%E6%8D%AE%E5%BA%93/MybatisPlus/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">MybatisPlus</div></div></a></div><div class="next-post pull-right"><a href="/2022/03/08/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/RabbitMQ/"><img class="next-cover" src="https://s2.loli.net/2022/03/01/EQFS7h3Ud5ZpwxI.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">RabbitMQ</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/09/22/Java%E5%90%8E%E7%AB%AF/Java%E5%9F%BA%E7%A1%80/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%8A%EF%BC%89/" title="Java面向对象（上）"><img class="cover" src="https://i.loli.net/2020/07/27/d6gvZ4rhtlNHcjU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-22</div><div class="title">Java面向对象（上）</div></div></a></div><div><a href="/2020/10/14/Java%E5%90%8E%E7%AB%AF/Java%E5%9F%BA%E7%A1%80/java/" title="Java运算符"><img class="cover" src="https://i.loli.net/2020/07/27/d6gvZ4rhtlNHcjU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-14</div><div class="title">Java运算符</div></div></a></div><div><a href="/2022/03/07/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/EurekaServerApp%E6%B3%A8%E8%A7%A3%E8%AF%A6%E8%A7%A3/" title="EurekaServerApp注解详解"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-07</div><div class="title">EurekaServerApp注解详解</div></div></a></div><div><a href="/2022/02/25/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/SprinCloud%E7%86%94%E6%96%AD%E6%9C%BA%E5%88%B6/" title="SpringCloud——服务熔断"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-25</div><div class="title">SpringCloud——服务熔断</div></div></a></div><div><a href="/2022/03/06/Java%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/%E7%A7%92%E6%9D%80%E9%A1%B9%E7%9B%AE/" title="秒杀项目"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-06</div><div class="title">秒杀项目</div></div></a></div><div><a href="/2020/10/16/Java%E5%90%8E%E7%AB%AF/Java%E5%9F%BA%E7%A1%80/java02/" title="Java程序流程控制与数组"><img class="cover" src="https://i.loli.net/2020/07/27/d6gvZ4rhtlNHcjU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-16</div><div class="title">Java程序流程控制与数组</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">陈子洋</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Dubbo"><span class="toc-number">1.</span> <span class="toc-text">Dubbo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Dubbo%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.1.</span> <span class="toc-text">Dubbo是什么?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RPC%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.1.1.</span> <span class="toc-text">RPC是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dubbo%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.2.</span> <span class="toc-text">Dubbo工作原理</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/10/28/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/" title="链表"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="链表"/></a><div class="content"><a class="title" href="/2022/10/28/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/" title="链表">链表</a><time datetime="2022-10-28T01:41:40.000Z" title="发表于 2022-10-28 09:41:40">2022-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%A5%87%E6%80%AA%E7%9A%84%E5%A3%B0%E6%98%8E/" title="C语言奇怪的声明"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言奇怪的声明"/></a><div class="content"><a class="title" href="/2022/10/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%A5%87%E6%80%AA%E7%9A%84%E5%A3%B0%E6%98%8E/" title="C语言奇怪的声明">C语言奇怪的声明</a><time datetime="2022-10-25T10:06:08.000Z" title="发表于 2022-10-25 18:06:08">2022-10-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/21/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA/" title="C语言内存分区"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言内存分区"/></a><div class="content"><a class="title" href="/2022/10/21/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA/" title="C语言内存分区">C语言内存分区</a><time datetime="2022-10-21T11:02:01.000Z" title="发表于 2022-10-21 19:02:01">2022-10-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/19/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="排序算法"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="排序算法"/></a><div class="content"><a class="title" href="/2022/10/19/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="排序算法">排序算法</a><time datetime="2022-10-19T12:15:20.000Z" title="发表于 2022-10-19 20:15:20">2022-10-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/17/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80(3)-%E6%8C%87%E9%92%88/" title="C语言基础(3)-指针"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言基础(3)-指针"/></a><div class="content"><a class="title" href="/2022/10/17/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80(3)-%E6%8C%87%E9%92%88/" title="C语言基础(3)-指针">C语言基础(3)-指针</a><time datetime="2022-10-17T01:04:28.000Z" title="发表于 2022-10-17 09:04:28">2022-10-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 陈子洋</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

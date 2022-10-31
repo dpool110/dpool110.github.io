@@ -1,0 +1,330 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>C语言基础(1) | 不愿努力的帅洋</title><meta name="author" content="陈子洋"><meta name="copyright" content="陈子洋"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="C语言数据类型、常量与变量、运算符">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言基础(1)">
+<meta property="og:url" content="http://example.com/2022/10/11/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80(1)/index.html">
+<meta property="og:site_name" content="不愿努力的帅洋">
+<meta property="og:description" content="C语言数据类型、常量与变量、运算符">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2022-10-11T11:05:13.000Z">
+<meta property="article:modified_time" content="2022-10-31T01:49:43.436Z">
+<meta property="article:author" content="陈子洋">
+<meta property="article:tag" content="嵌入式开发">
+<meta property="article:tag" content="C语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/10/11/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80(1)/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'C语言基础(1)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-31 09:49:43'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">不愿努力的帅洋</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">C语言基础(1)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-11T11:05:13.000Z" title="发表于 2022-10-11 19:05:13">2022-10-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-31T01:49:43.436Z" title="更新于 2022-10-31 09:49:43">2022-10-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/">嵌入式开发</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="C语言基础(1)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>C语言数据类型、常量与变量、运算符</p>
+<span id="more"></span>
+
+<h1 id="C语言基础-1"><a href="#C语言基础-1" class="headerlink" title="C语言基础(1)"></a>C语言基础(1)</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="C语言特点"><a href="#C语言特点" class="headerlink" title="C语言特点"></a>C语言特点</h3><ol>
+<li>基础性的语言</li>
+<li>语法简洁、紧凑、方便、灵活</li>
+<li>运算符丰富，数据结构丰富</li>
+<li>结构化、模块化编程</li>
+<li>移植性号，执行效率高</li>
+<li><strong>允许直接对硬件操作</strong> </li>
+</ol>
+<blockquote>
+<p><strong>C语言学习要点：</strong></p>
+<ul>
+<li>概念的正确性</li>
+<li>动手能力</li>
+<li>阅读优秀的程序段</li>
+<li>大量练习，面试题    </li>
+</ul>
+</blockquote>
+<h3 id="C语言讲解流程"><a href="#C语言讲解流程" class="headerlink" title="C语言讲解流程"></a>C语言讲解流程</h3><ol>
+<li>基本概念</li>
+<li>数据类型，运算符和表达式</li>
+<li>输入输出专题</li>
+<li>流程控制</li>
+<li>数组</li>
+<li>指针</li>
+<li>函数</li>
+<li>构造类型</li>
+<li>动态内存管理</li>
+<li>调试工具和调试技巧（gdb，make）</li>
+<li>常用库函数（提前封装好的工具函数）</li>
+</ol>
+<h3 id="使用平台"><a href="#使用平台" class="headerlink" title="使用平台"></a>使用平台</h3><p>64位Redhat6、编辑器vim、编译器gcc(make)</p>
+<h2 id="gcc、vim"><a href="#gcc、vim" class="headerlink" title="gcc、vim"></a>gcc、vim</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//头文件的包含</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span><span class="comment">//printf在stdio库当中</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span><span class="comment">//exit在stdlib库当中</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">void main(void)//不传参</span></span><br><span class="line"><span class="comment">void main(int argc,char **argv)//char *argv[]</span></span><br><span class="line"><span class="comment">int main(int argc,char **argv)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/*\n表示换行，也表示刷新缓冲区*/</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;hello world!\n&quot;</span>);</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>C源文件处理过程</p>
+<p>C源文件→预处理→编译→汇编→链接→可执行文件</p>
+</blockquote>
+<p>编译工具：gcc</p>
+<blockquote>
+<p><strong>编写程序思路要求</strong></p>
+<ol>
+<li>头文件正确的重要性</li>
+<li>以函数位单位来进行程序编写</li>
+</ol>
+</blockquote>
+<h2 id="第一个c程序"><a href="#第一个c程序" class="headerlink" title="第一个c程序"></a>第一个c程序</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;hello world!\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>输出：</p>
+<p>​    hello world！</p>
+</blockquote>
+<h3 id="Linux下C程序执行过程"><a href="#Linux下C程序执行过程" class="headerlink" title="Linux下C程序执行过程"></a>Linux下C程序执行过程</h3><p>在Linux下使用<code>gcc</code>命令来对<code>.c</code>文件进行编译，如果不对编译生成的文件重命名，默认会编译生成<code>a.out</code>文件，这个时候使用<code>./</code>就可以运行编译后的文件。</p>
+<h2 id="C语言数据类型"><a href="#C语言数据类型" class="headerlink" title="C语言数据类型"></a>C语言数据类型</h2><p>C语言包含的数据类型如下图：</p>
+<p><img src="https://raw.githubusercontent.com/dpool110/picgo/master/202209141430471.png" alt="C语言数据类型"></p>
+<h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><p><img src="https://appwk.baidu.com/naapi/doc/view?ih=485&o=png_6_0_0_135_758_637_349_892.979_1262.879&iw=883&ix=0&iy=0&aimw=883&rn=1&doc_id=c2ac4adcd15abe23482f4d35&pn=1&sign=da4d0b93d0b449ff1ea04df126bd348c&type=1&app_ver=2.9.8.2&ua=bd_800_800_IncredibleS_2.9.8.2_2.3.7&bid=1&app_ua=IncredibleS&uid=&cuid=&fr=3&Bdi_bear=WIFI&from=3_10000&bduss=&pid=1&screen=800_800&sys_ver=2.3.7" alt="基本数据类型"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/gogokongyin/article/details/39758289">有符号和无符号看这里&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</a></p>
+<h3 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h3><p>对于整型数据类型有三种形式：<strong>十进制</strong>、<strong>八进制</strong>和<strong>十六进制</strong>，从名称上我们可以看出各个进制的区别，十进制和八进制比较明显，十六进制是从0<del>9后再从A</del>F。我们需要了解<a target="_blank" rel="noopener" href="https://blog.csdn.net/DJL0718/article/details/107797847?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166169233816782246489792%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=166169233816782246489792&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-107797847-null-null.142%5Ev42%5Enew_blog_pos_by_title,185%5Ev2%5Econtrol&utm_term=%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2&spm=1018.2226.3001.4187">进制间的相互转换</a>。</p>
+<p><a target="_blank" rel="noopener" href="https://www.imooc.com/article/16813?block_id=tuijian_wz">反码和补码知识补充</a></p>
+<h3 id="字符类型——ASCII表"><a href="#字符类型——ASCII表" class="headerlink" title="字符类型——ASCII表"></a>字符类型——ASCII表</h3><img src="https://img-blog.csdnimg.cn/349ecb1a3c1847f79c8c2df1d438a50f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAeTF4MjMz,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"  />
+
+<p>简单归纳：</p>
+<p>ASCII码使用指定的7位或8位二进制数组合来表示128或256种字符。标准的或说基础的ASCII表是由7位二进制数组合而成的(剩下一位为0)，表示符号0~127。</p>
+<p>后128位为扩展ASCII码，不同编码方式中，0<del>127表示的符号是一样的，128</del>255表示的符号不一样。比如：130在法语编码中代表了é，在希伯来语编码中却代表了字母Gimel (ג)。</p>
+<p>0～31及127(共33个)是控制字符或通信专用字符，为控制码。</p>
+<blockquote>
+<p><strong>需要对于典型的ASCII码敏感</strong></p>
+<ul>
+<li>32为空格码。</li>
+<li>33～126(共94个)为形象码。</li>
+<li>48～57为0到9十个阿拉伯数字。</li>
+<li>65～90为26个大写英文字母。</li>
+<li>97～122为26个小写英文字母。 </li>
+</ul>
+</blockquote>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/ARTisboom/article/details/122694847">https://blog.csdn.net/ARTisboom/article/details/122694847</a></p>
+<p>其中0代表NULL，我们后面会用到空洞文件，文件中一部分充斥着ASCII码为0的空字符。字符串最后有尾0做为特殊标记，其中尾0就是ASCII为0的特殊字符。</p>
+<h3 id="特殊类型"><a href="#特殊类型" class="headerlink" title="特殊类型"></a>特殊类型</h3><p>bool类型在上面类型图上没有显示，false为0，true为1。</p>
+<h4 id="float类型的特殊性"><a href="#float类型的特殊性" class="headerlink" title="float类型的特殊性"></a>float类型的特殊性</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">func</span><span class="params">(<span class="type">float</span> f)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(f &lt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(f == <span class="number">0</span>) #错误</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于由于计算机二进制表示浮点数有精度的问题，0形式的浮点数实际上不是0，而是非常接近零的小数，所以<code>float f == 0</code>是永远不会成立的。</p>
+<p><font style="background-color:red">如果我们需要在程序中使用，可以通过float类型精确到小数点后六位的特性，通过<code>if(fabs(f - 0) &lt;= 1e-6)</code>来判断是否为0</font></p>
+<h3 id="不同形式的0值"><a href="#不同形式的0值" class="headerlink" title="不同形式的0值"></a>不同形式的0值</h3><blockquote>
+<p><code>0</code>    代表   数字0， 若把 数字0 赋值给 某个字符，对应ASCII码值为  0x00(也就是十进制0) </p>
+<p><code>&#39;0&#39;</code>     代表  字符0 ，对应ASCII码值为  0x30 (也就是十进制 48)</p>
+<p><code>&quot;0&quot;</code>    代表  一个字符串， 字符串中含有 2个字符，分别是 ‘0’ 和 ‘\0’ </p>
+<p><code>&#39;\0&#39;</code>     代表   空字符(转义字符)【输出为空】， 对应ASCII码值为  0x00(也就是十进制 0)， 用作字符串结束符</p>
+</blockquote>
+<p><strong>注意：数据类型和后续代码中所使用的输入输出相匹配<font style="background-color:red">防止自相矛盾</font></strong></p>
+<h2 id="常量与变量"><a href="#常量与变量" class="headerlink" title="常量与变量"></a>常量与变量</h2><p> 常量：在程序执行过程中值不会发生变化的量，分为整型常量、实型常量、字符常量、字符串常量、标识常量</p>
+<ul>
+<li>整型常量：就是整数。</li>
+<li>实型常量：又称实数或浮点数。</li>
+<li>字符常量：由单引号引起的单个字符或转义字符。</li>
+</ul>
+<img src="https://img-blog.csdnimg.cn/20200224144541933.png?x-oss-process=im%E4%BB%A5%E4%B8%8A%E5%B8%B8%E7%94%A8%E7%9A%84age/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNjc2NzU3,size_16,color_FFFFFF,t_70">
+
+<ul>
+<li>字符串常量：由双引号引起的一个或多个字符组成的序列。<font style="background-color:red"><code>&quot;&quot;</code>特殊情况代表没有有效字符只有一个尾0，占一个字符</font></li>
+<li>标识常量：#define</li>
+</ul>
+<h3 id="define"><a href="#define" class="headerlink" title="#define"></a><code>#define</code></h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ZhaDeNianQu/article/details/120095018">看这里&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</a></p>
+<p>在C语言程序中，如果有一个值我们需要反复用到，还需要根据我们的需求产生变化，还希望它能够一改全改，我们就可以使用标识常量<code>#define</code>实现。</p>
+<p>除了可以用 #define 定义一个标识符来表示一个常量，还可以用 #define 定义函数，例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义常量</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_VALUE 100       <span class="comment">//定义整型变量MAX_VALUE值为100</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> USER_NAME <span class="string">&quot;huge&quot;</span>    <span class="comment">//定义字符串变量USER_NAME值为&quot;huge&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PI 3.1415926        <span class="comment">//定义浮点数变量PI值为3.1415926</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//定义函数</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX(a,b) (a&gt;b)?a:b  <span class="comment">//取两个数最大值</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MIN(a,b) (a&lt;b)?a:b  <span class="comment">//取两个数最小值</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="define定义函数"><a href="#define定义函数" class="headerlink" title="define定义函数"></a>define定义函数</h4><p><strong>define定义不带参数的函数</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RESULT (x*x-1)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Plase input num x = &quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,x);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,RESULT);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>输出：</strong></p>
+<p>Plase input num x = 10 11<br>10<br>99</p>
+</blockquote>
+<p><strong>define定义带参数的函数</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX(a,b) (a&gt;b)?a:b</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MIN(a,b) (a&lt;b)?a:b</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">double</span> a,b;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Plase input two num:&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%lf%lf&quot;</span>,&amp;a,&amp;b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Max value:%lf\n&quot;</span>,(a,b));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Min value:%lf\n&quot;</span>,(a,b));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>输出：</strong></p>
+<p>Plase input two num:18 22<br>Max value:22.000000<br>Min value:22.000000</p>
+</blockquote>
+<h4 id="define定义函数陷阱"><a href="#define定义函数陷阱" class="headerlink" title="define定义函数陷阱"></a>define定义函数陷阱</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RESULT(x)  x*x  </span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;RESULT是：%d\n&quot;</span>,RESULT(<span class="number">2</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;RESULT是：%d\n&quot;</span>,RESULT(<span class="number">2</span>+<span class="number">1</span>));</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>输出：</strong></p>
+<p>RESULT是：4<br>RESULT是：5</p>
+<blockquote>
+<p>这里在标识常量定义函数为<code>x*x</code>的情况下，我们认为正常的输出应该为：4和9。这就要在编写标识常量函数时候注意，<code>x*x</code>在程序中会转换为<code>2*1+2*1</code>，遵循算数的正常顺序。我们想要程序正常输出的话，需要标识常量<code>#define</code>在程序中的确使用，应该改为<code>(x)*(x)</code>或者使用<code>sqrt</code>函数</p>
+</blockquote>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;math.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//#define RESULT(x) x*x</span></span><br><span class="line"><span class="comment">//#define RESULT(x) (x)*(x)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RESULT(x) pow((x),2)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> a = RESULT(<span class="number">2</span>);</span><br><span class="line">    <span class="type">int</span> b = RESULT(<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,b);</span><br><span class="line"><span class="comment">//    printf(&quot;%d\n&quot;,RESULT(2));</span></span><br><span class="line"><span class="comment">//    printf(&quot;%d\n&quot;,RESULT(2+1));</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><font style="background-color:red"><strong>对于宏定义，保险的做法是不仅应在参数两侧加括号，也应在整个字符串外加括号。</strong></font></p>
+<h3 id="if注释"><a href="#if注释" class="headerlink" title="#if注释"></a>#if注释</h3><p>当想注释屏蔽掉大块代码段时，用<code>/*…*/&quot;</code>做大段注释，需要防止被注释掉的代码段中有嵌套的<code>/*…*/</code>，一旦出现<code>&quot;/**/&quot;嵌套&quot;/**/&quot;</code>的情况，有可能会导致你注释掉的代码区域并不是想要的区域范围。因此用 <code>#if 0</code> 要比使用 <code>/* */</code>要方便不少。</p>
+<p>情况一：如有一段不想要的代码，可以直接用 “ #if 0 … #endif “ 形式来注释，效果等同于”/* */“</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">if</span> 0</span></span><br><span class="line"> </span><br><span class="line">    ...code...</span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p>情况二：选择结构的条件编译。如果常量为真（非0），就执行程序段1，否则执行程序段2。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">if</span> 常量</span></span><br><span class="line"> </span><br><span class="line">    ...code <span class="number">1.</span>..</span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"> </span><br><span class="line">    ...code <span class="number">2.</span>..</span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p>情况三：嵌套情况。如果常量a为真（非0），就执行程序段1。当常量a为0且常量b为真时，执行程序段2；当常量a为0且常量b为0时，执行程序段3。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">if</span> 常量a</span></span><br><span class="line"> </span><br><span class="line">　　  ...code <span class="number">1.</span>..</span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"> </span><br><span class="line">        <span class="meta">#<span class="keyword">if</span> 常量b</span></span><br><span class="line"> </span><br><span class="line">　　        ...code <span class="number">2.</span>..</span><br><span class="line"> </span><br><span class="line">        <span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"> </span><br><span class="line">　　        ...code <span class="number">3.</span>..</span><br><span class="line"> </span><br><span class="line">　　    <span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>定义：**<code>[存储类型] 数据类型 标识符 = 值</code> **</p>
+<p>在C语言中，所有变量必须先声明后使用。<font style="background-color:red">注意数据类型要和给的值类型匹配</font></p>
+<h4 id="存储类型"><a href="#存储类型" class="headerlink" title="存储类型"></a>存储类型</h4><p>定义中的其他和Java没什么区别，对于存储类型有很大区别。分为四种 存储类型：<strong>auto、static、register、extern</strong></p>
+<ul>
+<li><p><strong>auto：</strong>默认类型，自动分配空间，自动回收空间</p>
+</li>
+<li><p><strong>register：</strong>寄存器类型，只能定义局部变量，不能定义全局变量</p>
+<blockquote>
+<p>只能定义局部变量，不能定义全局变量，只能定义32位大小的数据类型，如都变了就不可以，寄存器没有地址，所以寄存器变量无法打印出地址查看或使用。</p>
+<p>register的思想是，将register变量放在机器的寄存器中，这样可以使程序更小、执行速度更快。编译器可以忽略此选项。</p>
+</blockquote>
+</li>
+<li><p><strong>static：</strong>静态型，自动初始化为0值或空值，static的值有继承性</p>
+</li>
+<li><p><strong>extern：</strong>说明型，不能改变说明的值或类型</p>
+</li>
+</ul>
+<h3 id="局部变量和全局变量"><a href="#局部变量和全局变量" class="headerlink" title="局部变量和全局变量"></a>局部变量和全局变量</h3><p><strong>局部变量</strong>定义在函数内部的变量，局部变量的作用域仅限于函数内部。局部变量是在函数调用时产生，在函数执行完毕时消失。</p>
+<p><strong>全局变量</strong>必须定义在函数外部，且只能定义一次。在每个需要访问外部变量的函数中，必须声明相应的外部变量。</p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44982036/article/details/108797895">运算符</a></h2><img src="https://img-blog.csdnimg.cn/20200925153232107.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4MjAzNg==,size_16,color_FFFFFF,t_70#pic_center">
+
+<p><strong>2、赋值运算符</strong><br><img src="https://img-blog.csdnimg.cn/20200925153429327.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4MjAzNg==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p><strong>3、比较运算符</strong><br><img src="https://img-blog.csdnimg.cn/20200925153442514.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4MjAzNg==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p><strong>4、逻辑运算符</strong><br><img src="https://img-blog.csdnimg.cn/20200925153520563.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4MjAzNg==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p><strong>5、位运算符</strong></p>
+<img src="https://img-blog.csdnimg.cn/20190314132200533.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RhcmtfY3k=,size_16,color_FFFFFF,t_70">
+
+<p>注：左移运算符左移一位相当于乘二，其效率比乘以2的效率高。左移其右边自动补零，右移其左边补符号位</p>
+<p><strong>5、其他运算符</strong></p>
+<img src="https://img-blog.csdnimg.cn/20190314132459242.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RhcmtfY3k=,size_16,color_FFFFFF,t_70">
+
+<p>6、补充</p>
+<ul>
+<li>求字节数运算符：sizeof</li>
+<li>强制类型转换运算符：（类型）</li>
+<li>下标运算符：[ ]</li>
+<li>函数调用运算符：( )</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">陈子洋</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/10/11/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80(1)/">http://example.com/2022/10/11/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80(1)/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">不愿努力的帅洋</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/">嵌入式开发</a><a class="post-meta__tags" href="/tags/C%E8%AF%AD%E8%A8%80/">C语言</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/10/14/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80(2)/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C语言基础(2)</div></div></a></div><div class="next-post pull-right"><a href="/2022/10/11/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/Linux/Linux%E5%9F%BA%E7%A1%80(4)/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux基础(4)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/10/21/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA/" title="C语言内存分区"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-21</div><div class="title">C语言内存分区</div></div></a></div><div><a href="/2022/10/17/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80(3)-%E6%8C%87%E9%92%88/" title="C语言基础(3)-指针"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-17</div><div class="title">C语言基础(3)-指针</div></div></a></div><div><a href="/2022/10/14/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80(2)/" title="C语言基础(2)"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-14</div><div class="title">C语言基础(2)</div></div></a></div><div><a href="/2022/10/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%A5%87%E6%80%AA%E7%9A%84%E5%A3%B0%E6%98%8E/" title="C语言奇怪的声明"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-25</div><div class="title">C语言奇怪的声明</div></div></a></div><div><a href="/2022/10/19/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="排序算法"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-19</div><div class="title">排序算法</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">陈子洋</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80-1"><span class="toc-number">1.</span> <span class="toc-text">C语言基础(1)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9"><span class="toc-number">1.1.1.</span> <span class="toc-text">C语言特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C%E8%AF%AD%E8%A8%80%E8%AE%B2%E8%A7%A3%E6%B5%81%E7%A8%8B"><span class="toc-number">1.1.2.</span> <span class="toc-text">C语言讲解流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%B9%B3%E5%8F%B0"><span class="toc-number">1.1.3.</span> <span class="toc-text">使用平台</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gcc%E3%80%81vim"><span class="toc-number">1.2.</span> <span class="toc-text">gcc、vim</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AAc%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.3.</span> <span class="toc-text">第一个c程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E4%B8%8BC%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B"><span class="toc-number">1.3.1.</span> <span class="toc-text">Linux下C程序执行过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C%E8%AF%AD%E8%A8%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.4.</span> <span class="toc-text">C语言数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.4.1.</span> <span class="toc-text">基本数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E5%9E%8B"><span class="toc-number">1.4.2.</span> <span class="toc-text">整型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B%E2%80%94%E2%80%94ASCII%E8%A1%A8"><span class="toc-number">1.4.3.</span> <span class="toc-text">字符类型——ASCII表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.4.4.</span> <span class="toc-text">特殊类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#float%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%89%B9%E6%AE%8A%E6%80%A7"><span class="toc-number">1.4.4.1.</span> <span class="toc-text">float类型的特殊性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E5%BD%A2%E5%BC%8F%E7%9A%840%E5%80%BC"><span class="toc-number">1.4.5.</span> <span class="toc-text">不同形式的0值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E4%B8%8E%E5%8F%98%E9%87%8F"><span class="toc-number">1.5.</span> <span class="toc-text">常量与变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#define"><span class="toc-number">1.5.1.</span> <span class="toc-text">#define</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#define%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0"><span class="toc-number">1.5.1.1.</span> <span class="toc-text">define定义函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#define%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0%E9%99%B7%E9%98%B1"><span class="toc-number">1.5.1.2.</span> <span class="toc-text">define定义函数陷阱</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#if%E6%B3%A8%E9%87%8A"><span class="toc-number">1.5.2.</span> <span class="toc-text">#if注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">1.5.3.</span> <span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.5.3.1.</span> <span class="toc-text">存储类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E5%92%8C%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-number">1.5.4.</span> <span class="toc-text">局部变量和全局变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">1.6.</span> <span class="toc-text">运算符</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/10/28/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/" title="链表"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="链表"/></a><div class="content"><a class="title" href="/2022/10/28/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/" title="链表">链表</a><time datetime="2022-10-28T01:41:40.000Z" title="发表于 2022-10-28 09:41:40">2022-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%A5%87%E6%80%AA%E7%9A%84%E5%A3%B0%E6%98%8E/" title="C语言奇怪的声明"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言奇怪的声明"/></a><div class="content"><a class="title" href="/2022/10/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%A5%87%E6%80%AA%E7%9A%84%E5%A3%B0%E6%98%8E/" title="C语言奇怪的声明">C语言奇怪的声明</a><time datetime="2022-10-25T10:06:08.000Z" title="发表于 2022-10-25 18:06:08">2022-10-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/21/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA/" title="C语言内存分区"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言内存分区"/></a><div class="content"><a class="title" href="/2022/10/21/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA/" title="C语言内存分区">C语言内存分区</a><time datetime="2022-10-21T11:02:01.000Z" title="发表于 2022-10-21 19:02:01">2022-10-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/19/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="排序算法"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="排序算法"/></a><div class="content"><a class="title" href="/2022/10/19/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="排序算法">排序算法</a><time datetime="2022-10-19T12:15:20.000Z" title="发表于 2022-10-19 20:15:20">2022-10-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/17/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80(3)-%E6%8C%87%E9%92%88/" title="C语言基础(3)-指针"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言基础(3)-指针"/></a><div class="content"><a class="title" href="/2022/10/17/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80(3)-%E6%8C%87%E9%92%88/" title="C语言基础(3)-指针">C语言基础(3)-指针</a><time datetime="2022-10-17T01:04:28.000Z" title="发表于 2022-10-17 09:04:28">2022-10-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 陈子洋</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
