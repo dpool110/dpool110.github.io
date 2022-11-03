@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>计划表</title>
+      <link href="/2022/11/03/%E8%AE%A1%E5%88%92%E8%A1%A8/"/>
+      <url>/2022/11/03/%E8%AE%A1%E5%88%92%E8%A1%A8/</url>
+      
+        <content type="html"><![CDATA[<img src="https://s2.loli.net/2022/08/26/vWabw5yUin1d2Yf.png"><div class="timeline blue"><div class='timeline-item headline'><div class='timeline-item-title'><div class='item-circle'><p>2022</p></div></div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>11-01</p></div></div><div class='timeline-item-content'><table>    <tr>         <th>📚学习计划</th>         <th>🧣生活计划</th>     </tr>     <tr>         <td>1、写链表博客，还有约瑟夫环的博客<br>2、留一个小时刷题<br>3、string.h库函数<br>4、五子棋人机对战<br>5、排序算法</td>         <td>裤腰带勒紧过日子😫</td>     </tr>     <tr>         <th colspan="2">📌知识补充计划</th>     </tr>    <tr>        <td colspan="2">复习C语言之前的知识（带着刷题）</td>     </tr>    <tr>         <th>📝今天待做事项</th>         <th>🧩完成情况</th>     </tr>     <tr>         <td>1、博客文章<br>2、刷题<br>3、复习</td>         <td>Linux视频看到P11<br>视频对应博客笔记未完成</td>     </tr>      <tr>         <th colspan="2">💡反思总结</th>     </tr>    <tr>        <td colspan="2"></td>     </tr>    <tr>         <th colspan="2">🌟明日计划</th>     </tr>    <tr>         <td colspan="2"></td>     </tr></table></div></div></div>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>栈和队列</title>
       <link href="/2022/11/02/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/"/>
       <url>/2022/11/02/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/</url>
