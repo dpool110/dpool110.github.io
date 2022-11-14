@@ -1,0 +1,248 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>文件IO | 不愿努力的帅洋</title><meta name="author" content="陈子洋"><meta name="copyright" content="陈子洋"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="文件IO前言IO操作是一切实现的基础，我们之前写的程序里面的数据都是在内存中进行操作，数据随着程序的结束在内存中就被销毁了。 如果程序中产出的数据有保留的价值或者我们希望之后还能够使用，我们可以把这些数据保存到文件中。这些数据我们可以从保存的文件中读取出来进行使用或者二次加工 。 所以文件IO输入输出的操作是一切实现的基础，没有IO操作我们程序的结果是没有的。 标准IO和系统调用IOIO分为**s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件IO">
+<meta property="og:url" content="http://example.com/2022/11/05/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/%E6%96%87%E4%BB%B6IO/index.html">
+<meta property="og:site_name" content="不愿努力的帅洋">
+<meta property="og:description" content="文件IO前言IO操作是一切实现的基础，我们之前写的程序里面的数据都是在内存中进行操作，数据随着程序的结束在内存中就被销毁了。 如果程序中产出的数据有保留的价值或者我们希望之后还能够使用，我们可以把这些数据保存到文件中。这些数据我们可以从保存的文件中读取出来进行使用或者二次加工 。 所以文件IO输入输出的操作是一切实现的基础，没有IO操作我们程序的结果是没有的。 标准IO和系统调用IOIO分为**s">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg">
+<meta property="article:published_time" content="2022-11-05T05:54:19.000Z">
+<meta property="article:modified_time" content="2022-11-05T10:43:57.242Z">
+<meta property="article:author" content="陈子洋">
+<meta property="article:tag" content="嵌入式开发">
+<meta property="article:tag" content="C语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/11/05/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/%E6%96%87%E4%BB%B6IO/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '文件IO',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-05 18:43:57'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://unpkg.zhimg.com/hexo-butterfly-clock/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/dpool110/picgo/master/202210310921391.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 门面</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 整理整理</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 芝士=💪</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><span> 数据结构</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 哔哔叨🤫</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/artitalk/"><span> 说说</span></a></li><li><a class="site-page child" href="/plan/"><span> 计划表</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">不愿努力的帅洋</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 门面</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 整理整理</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 芝士=💪</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><span> 数据结构</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 哔哔叨🤫</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/artitalk/"><span> 说说</span></a></li><li><a class="site-page child" href="/plan/"><span> 计划表</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">文件IO</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-05T05:54:19.000Z" title="发表于 2022-11-05 13:54:19">2022-11-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-05T10:43:57.242Z" title="更新于 2022-11-05 18:43:57">2022-11-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/">嵌入式开发</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="文件IO"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="文件IO"><a href="#文件IO" class="headerlink" title="文件IO"></a>文件IO</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>IO操作是一切实现的基础，我们之前写的程序里面的数据都是在内存中进行操作，数据随着程序的结束在内存中就被销毁了。</p>
+<p>如果程序中产出的数据有保留的价值或者我们希望之后还能够使用，我们可以把这些数据保存到文件中。这些数据我们可以从保存的文件中读取出来进行使用或者二次加工 。</p>
+<p>所以文件IO输入输出的操作是一切实现的基础，没有IO操作我们程序的结果是没有的。</p>
+<h3 id="标准IO和系统调用IO"><a href="#标准IO和系统调用IO" class="headerlink" title="标准IO和系统调用IO"></a>标准IO和系统调用IO</h3><p>IO分为**<code>stdio</code>标准IO<strong>和</strong><code>sysio</code>系统调用IO（文件IO）**</p>
+<p>两种IO都可以使用的情况下，我们优先选择标准IO</p>
+<blockquote>
+<p>标准IO 是依赖于系统调用IO实现的，因为我们在不同编译环境下，机器的内核可能是不一样的，所以不同的<code>stdio</code>依赖的系统调用IO是不一样的。以<code>fopen</code>函数为例，在Linux环境下依赖的函数时<code>open</code>，而在Windows环境下依赖<code>openfile</code>，所以<code>open</code>和<code>openfile</code>就是内核提供的系统调用IO。</p>
+<p>这种情况下，我们程序的移植性就很成问题，为了避免这样问题的产生，提高我们程序的移植性，我们会优先选择标准IO</p>
+</blockquote>
+<h2 id="标准IO"><a href="#标准IO" class="headerlink" title="标准IO"></a>标准IO</h2><p>我们先用<code>man</code>打开<code>fopen();</code>函数</p>
+ <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">NAME</span><br><span class="line">       fopen, fdopen, freopen - stream open functions<span class="comment">//前三个函数的作用是打开一个stream</span></span><br><span class="line"></span><br><span class="line">SYNOPSIS</span><br><span class="line">       <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span><span class="comment">//要包含的头文件</span></span></span><br><span class="line"></span><br><span class="line">       FILE *<span class="title function_">fopen</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *pathname, <span class="type">const</span> <span class="type">char</span> *mode)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>FILE *fopen(const char *pathname, const char *mode);</code></p>
+<p>有两个参数<code>pathname</code>是指定要打开的文件，<code>mode</code>打开文件的权限，返回值<code>FILE *</code>  是一个结构体的起始位置。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RETURN VALUE</span><br><span class="line">       Upon successful completion <span class="title function_">fopen</span><span class="params">()</span>, <span class="title function_">fdopen</span><span class="params">()</span> and <span class="title function_">freopen</span><span class="params">()</span> <span class="keyword">return</span> a FILE pointer.  Otherwise, <span class="literal">NULL</span> is returned and errno is <span class="built_in">set</span> to</span><br><span class="line">       indicate the error.</span><br></pre></td></tr></table></figure>
+
+<p><code>fopen()</code>函数调用成功会返回一个<code>FILE *</code>指针，失败会返回<code>NULL</code>空指针，并且会设置一个<code>errno</code></p>
+<p> Start-BitsTransfer -Source <a target="_blank" rel="noopener" href="https://down.qq.com/lol/pingbao/WeGameMiniLoader.LOL.2.6.8.1407.exe">https://down.qq.com/lol/pingbao/WeGameMiniLoader.LOL.2.6.8.1407.exe</a> -Destination F:ser</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">陈子洋</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/11/05/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/%E6%96%87%E4%BB%B6IO/">http://example.com/2022/11/05/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/%E6%96%87%E4%BB%B6IO/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">不愿努力的帅洋</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/">嵌入式开发</a><a class="post-meta__tags" href="/tags/C%E8%AF%AD%E8%A8%80/">C语言</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/11/02/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/"><img class="next-cover" src="https://raw.githubusercontent.com/dpool110/picgo/master/202211011447751.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">栈和队列</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/10/21/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA/" title="C语言内存分区"><img class="cover" src="https://lifewth.com/wp-content/uploads/2018/09/58677f12f108e00800c25f52.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-21</div><div class="title">C语言内存分区</div></div></a></div><div><a href="/2022/10/11/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80(1)/" title="C语言基础(1)"><img class="cover" src="https://lifewth.com/wp-content/uploads/2018/09/58677f12f108e00800c25f52.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-11</div><div class="title">C语言基础(1)</div></div></a></div><div><a href="/2022/10/14/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80(2)/" title="C语言基础(2)"><img class="cover" src="https://lifewth.com/wp-content/uploads/2018/09/58677f12f108e00800c25f52.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-14</div><div class="title">C语言基础(2)</div></div></a></div><div><a href="/2022/10/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%A5%87%E6%80%AA%E7%9A%84%E5%A3%B0%E6%98%8E/" title="C语言奇怪的声明"><img class="cover" src="https://lifewth.com/wp-content/uploads/2018/09/58677f12f108e00800c25f52.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-25</div><div class="title">C语言奇怪的声明</div></div></a></div><div><a href="/2022/10/17/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80(3)-%E6%8C%87%E9%92%88/" title="C语言基础(3)-指针"><img class="cover" src="https://lifewth.com/wp-content/uploads/2018/09/58677f12f108e00800c25f52.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-17</div><div class="title">C语言基础(3)-指针</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/dpool110/picgo/master/202210310921391.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">陈子洋</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/dpool110"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/dpool110" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=1042743887@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Share And Love! 简单的小破站，希望逛的开心😆</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6IO"><span class="toc-number">1.</span> <span class="toc-text">文件IO</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E5%87%86IO%E5%92%8C%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8IO"><span class="toc-number">1.1.1.</span> <span class="toc-text">标准IO和系统调用IO</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E5%87%86IO"><span class="toc-number">1.2.</span> <span class="toc-text">标准IO</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/05/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/%E6%96%87%E4%BB%B6IO/" title="文件IO"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="文件IO"/></a><div class="content"><a class="title" href="/2022/11/05/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/%E6%96%87%E4%BB%B6IO/" title="文件IO">文件IO</a><time datetime="2022-11-05T05:54:19.000Z" title="发表于 2022-11-05 13:54:19">2022-11-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/02/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" title="栈和队列"><img src="https://raw.githubusercontent.com/dpool110/picgo/master/202211011447751.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="栈和队列"/></a><div class="content"><a class="title" href="/2022/11/02/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" title="栈和队列">栈和队列</a><time datetime="2022-11-02T03:14:11.000Z" title="发表于 2022-11-02 11:14:11">2022-11-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/01/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%80%9A%E7%94%A8%E9%93%BE%E8%A1%A8/" title="通用链表"><img src="https://raw.githubusercontent.com/dpool110/picgo/master/202211011447751.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="通用链表"/></a><div class="content"><a class="title" href="/2022/11/01/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%80%9A%E7%94%A8%E9%93%BE%E8%A1%A8/" title="通用链表">通用链表</a><time datetime="2022-11-01T10:31:24.000Z" title="发表于 2022-11-01 18:31:24">2022-11-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/28/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/" title="链表"><img src="https://raw.githubusercontent.com/dpool110/picgo/master/202211011447751.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="链表"/></a><div class="content"><a class="title" href="/2022/10/28/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/" title="链表">链表</a><time datetime="2022-10-28T01:41:40.000Z" title="发表于 2022-10-28 09:41:40">2022-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%A5%87%E6%80%AA%E7%9A%84%E5%A3%B0%E6%98%8E/" title="C语言奇怪的声明"><img src="https://lifewth.com/wp-content/uploads/2018/09/58677f12f108e00800c25f52.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言奇怪的声明"/></a><div class="content"><a class="title" href="/2022/10/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/C%E8%AF%AD%E8%A8%80/C%E8%AF%AD%E8%A8%80%E5%A5%87%E6%80%AA%E7%9A%84%E5%A3%B0%E6%98%8E/" title="C语言奇怪的声明">C语言奇怪的声明</a><time datetime="2022-10-25T10:06:08.000Z" title="发表于 2022-10-25 18:06:08">2022-10-25</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022  <i id="heartbeat" class="fa fas fa-heartbeat"></i> 陈子洋</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'c7c46ab7aa9095cd2c31',
+      clientSecret: '0493b6a0b9982ba58186f7fa0f4b18d0d33c884f',
+      repo: 'blog-comments',
+      owner: 'dpool110',
+      admin: ['dpool110'],
+      id: 'd69eaf47ff342616ed6f95e1ce9bcf44',
+      updateCountCallback: commentCount
+    },))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="帅洋,真帅" data-fontsize="15px" data-random="false" async="async"></script><script>window.$crisp = [];
+window.CRISP_WEBSITE_ID = "9ad0e980-8d18-4a90-bb82-2377bae9b3b2";
+(function () {
+  d = document;
+  s = d.createElement("script");
+  s.src = "https://client.crisp.chat/l.js";
+  s.async = 1;
+  d.getElementsByTagName("head")[0].appendChild(s);
+})();
+$crisp.push(["safe", true])
+
+if (true) {
+  $crisp.push(["do", "chat:hide"])
+  $crisp.push(["on", "chat:closed", function() {
+    $crisp.push(["do", "chat:hide"])
+  }])
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      $crisp.push(["do", "chat:show"])
+      $crisp.push(["do", "chat:open"])
+
+    });
+  }
+  chatBtnFn()
+} else {
+  if (true) {
+    function chatBtnHide () {
+      $crisp.push(["do", "chat:hide"])
+    }
+    function chatBtnShow () {
+      $crisp.push(["do", "chat:show"])
+    }
+  }
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://fastly.jsdelivr.net/gh/tzy13755126023/BLOG_SOURCE/theme_f/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://unpkg.zhimg.com/hexo-butterfly-clock/lib/clock.min.js"></script><!-- hexo injector body_end end --></body></html>
