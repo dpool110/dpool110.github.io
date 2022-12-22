@@ -1,12 +1,12 @@
 @font-face{
-    font-family: 'Smiley Sans';
+    font-family: 'ZCOOLKuaiLe Regular';
     font-display: swap;
-    src: url('../font/SmileySans-Oblique.ttf') format("truetype");
+    src: url('../font/ZCOOLKuaiLe-Regular.ttf') format("truetype");
 }
 @font-face{
-    font-family: 'Smiley Sans';
+    font-family: 'ZCOOLKuaiLe Regular';
     font-display: swap;
-    src: url('../font/SmileySans-Oblique.ttf') format("truetype");
+    src: url('../font/ZCOOLKuaiLe-Regular.ttf') format("truetype");
 }
 body {
     font-family: 'Smiley Sans';
